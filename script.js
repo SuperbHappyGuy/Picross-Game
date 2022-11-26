@@ -8,6 +8,7 @@ let index = -1;
 var row1 = [];
 var rowString = [];
 let rowCount = 0;
+let rowAmount = 5;
 var rowStringResult = "";
 
 for (let i = 0; i < children.length; i++) {
@@ -31,42 +32,41 @@ for (let i = 0; i < children.length; i++) {
     row1.push({no: "no"})
   }
 
-  if (children[i].id === "gridItem5") {
-    break;
-  }
+  //if (children[i].id === "gridItem5") {
+    //break;
+  //}
 }
-  console.log(row1);
 
-for(let i = 0; i < row1.length; i++) {
-  if(row1[i].yes == "yes") {
-    rowCount++;
+for(let a = 1; a < rowAmount; a++) {
+
+  for(let i = 0; i < rowAmount; i++) {
+    if(row1[i * a].yes == "yes") {
+      rowCount++;
+    }
+    else {
+      if(rowCount != "0") {
+      rowString.push({result: "" + rowCount})
+      }
+      rowCount = 0;
+    }
   }
-  else {
-    if(rowCount != "0") {
+
+  if(rowCount != "0") {
     rowString.push({result: "" + rowCount})
     }
-    console.log(rowCount);
-    rowCount = 0;
-  }
-}
 
-if(rowCount != "0") {
-  rowString.push({result: "" + rowCount})
+  for(let i = 0; i < rowString.length; i++) {
+    rowStringResult += rowString[i].result + " ";
   }
 
-console.log(rowCount);
-console.log(rowString);
+  if(rowStringResult == "") {
+    rowStringResult = "0";
+  }
 
-for(let i = 0; i < rowString.length; i++) {
-  rowStringResult += rowString[i].result + " ";
+  console.log(rowStringResult);
+  document.getElementById("row" + a).innerHTML = rowStringResult;
+  rowString = [];
 }
-
-if(rowStringResult == "") {
-  rowStringResult = "0";
-}
-
-console.log(rowStringResult);
-document.getElementById("row1").innerHTML = rowStringResult;
 
   const onClick = (event) => {
       console.log(event.target.id);
