@@ -4,6 +4,7 @@ const children = parent.children;
 const childrenChild = parent.children.childrenChild;
 
 let index = -1;
+var click = false;
 
 var row = [];
 var row2 = [];
@@ -70,10 +71,6 @@ for (let i = 0; i < children.length; i++) {
       row5.push({no: "no"})
      }
   }
-
-  //if (children[i].id === "gridItem5") {
-    //break;
-  //}
 }
 
 for(let i = 0; i < 5; i++) {
