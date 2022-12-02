@@ -4,8 +4,12 @@ const children = parent.children;
 const childrenChild = parent.children.childrenChild;
 
 let index = -1;
-var click = false;
 
+var column = [];
+var column2 = [];
+var column3 = [];
+var column4 = [];
+var column5 = [];
 var row = [];
 var row2 = [];
 var row3 = [];
@@ -71,6 +75,18 @@ for (let i = 0; i < children.length; i++) {
       row5.push({no: "no"})
      }
   }
+
+  //if (children[i].id === "gridItem5") {
+    //break;
+  //}
+}
+
+for(let i = 0; i < 5; i++) {
+  column.push(row[i * 5]);
+  column2.push(row[i * 5 + 1]);
+  column3.push(row[i * 5 + 2]);
+  column4.push(row[i * 5 + 3]);
+  column5.push(row[i * 5 + 4]);
 }
 
 for(let i = 0; i < 5; i++) {
@@ -173,6 +189,12 @@ if(rowStringResult5 == "") {
 }
 
 console.log(rowString);
+console.log(column);
+console.log(column2);
+console.log(column3);
+console.log(column4);
+console.log(column5);
+
 document.getElementById("row1").innerHTML = rowStringResult;
 document.getElementById("row2").innerHTML = rowStringResult2;
 document.getElementById("row3").innerHTML = rowStringResult3;
