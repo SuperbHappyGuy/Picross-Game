@@ -10,6 +10,26 @@ var column2 = [];
 var column3 = [];
 var column4 = [];
 var column5 = [];
+var columnString = [];
+var columnString2 = [];
+var columnString3 = [];
+var columnString4 = [];
+var columnString5 = [];
+let columnCount = 0;
+let columnCount2 = 0;
+let columnCount3 = 0;
+let columnCount4 = 0;
+let columnCount5 = 0;
+var verticalString = "";
+var verticalString2 = "";
+var verticalString3 = "";
+var verticalString4 = "";
+var verticalString5 = "";
+var columnStringResult = "";
+var columnStringResult2 = "";
+var columnStringResult3 = "";
+var columnStringResult4 = "";
+var columnStringResult5 = "";
 var row = [];
 var row2 = [];
 var row3 = [];
@@ -40,12 +60,12 @@ if (rand <= 50) {
 }
 else {
     //console.log("greater");
-    document.getElementById(children[i].id).style.backgroundColor = "darkgrey";
+    document.getElementById(children[i].id).style.backgroundColor = "black";
 }
 }
 
 for (let i = 0; i < children.length; i++) {
-  if(document.getElementById(children[i].id).style.backgroundColor == "darkgrey") {
+  if(document.getElementById(children[i].id).style.backgroundColor == "black") {
     row.push({yes: "yes"})
     if(i > 4) {
      row2.push({yes: "yes"})
@@ -75,10 +95,6 @@ for (let i = 0; i < children.length; i++) {
       row5.push({no: "no"})
      }
   }
-
-  //if (children[i].id === "gridItem5") {
-    //break;
-  //}
 }
 
 for(let i = 0; i < 5; i++) {
@@ -90,6 +106,56 @@ for(let i = 0; i < 5; i++) {
 }
 
 for(let i = 0; i < 5; i++) {
+  if(column[i].yes == "yes") {
+    columnCount++;
+  }
+  else {
+    if(columnCount != "0") {
+    columnString.push({result: "" + columnCount})
+    }
+    columnCount = 0;
+  }
+
+  if(column2[i].yes == "yes") {
+    columnCount2++;
+  }
+  else {
+    if(columnCount2 != "0") {
+    columnString2.push({result: "" + columnCount2})
+    }
+    columnCount2 = 0;
+  }
+
+  if(column3[i].yes == "yes") {
+    columnCount3++;
+  }
+  else {
+    if(columnCount3 != "0") {
+    columnString3.push({result: "" + columnCount3})
+    }
+    columnCount3 = 0;
+  }
+
+  if(column4[i].yes == "yes") {
+    columnCount4++;
+  }
+  else {
+    if(columnCount4 != "0") {
+    columnString4.push({result: "" + columnCount4})
+    }
+    columnCount4 = 0;
+  }
+
+  if(column5[i].yes == "yes") {
+    columnCount5++;
+  }
+  else {
+    if(columnCount5 != "0") {
+    columnString5.push({result: "" + columnCount5})
+    }
+    columnCount5 = 0;
+  }
+
   if(row[i].yes == "yes") {
     rowCount++;
   }
@@ -155,7 +221,21 @@ if(rowCount != "0") {
         if(rowCount5 != "0") {
           rowString5.push({result5: "" + rowCount5})
           }
-
+          if(columnCount != "0") {
+            columnString.push({result: "" + columnCount})
+            }
+            if(columnCount2 != "0") {
+              columnString2.push({result: "" + columnCount2})
+              }
+              if(columnCount3 != "0") {
+                columnString3.push({result: "" + columnCount3})
+                }
+                if(columnCount4 != "0") {
+                  columnString4.push({result: "" + columnCount4})
+                  }
+                  if(columnCount5 != "0") {
+                    columnString5.push({result: "" + columnCount5})
+                    }
 for(let i = 0; i < rowString.length; i++) {
   rowStringResult += rowString[i].result + " ";
 }
@@ -170,6 +250,21 @@ for(let i = 0; i < rowString4.length; i++) {
 }
 for(let i = 0; i < rowString5.length; i++) {
   rowStringResult5 += rowString5[i].result5 + " ";
+}
+for(let i = 0; i < columnString.length; i++) {
+  columnStringResult += columnString[i].result + " ";
+}
+for(let i = 0; i < columnString2.length; i++) {
+  columnStringResult2 += columnString2[i].result + " ";
+}
+for(let i = 0; i < columnString3.length; i++) {
+  columnStringResult3 += columnString3[i].result + " ";
+}
+for(let i = 0; i < columnString4.length; i++) {
+  columnStringResult4 += columnString4[i].result + " ";
+}
+for(let i = 0; i < columnString5.length; i++) {
+  columnStringResult5 += columnString5[i].result + " ";
 }
 
 if(rowStringResult == "") {
@@ -187,19 +282,35 @@ if(rowStringResult4 == "") {
 if(rowStringResult5 == "") {
   rowStringResult5 = "0";
 }
+if(columnStringResult == "") {
+  columnStringResult = "0";
+}
+if(columnStringResult2 == "") {
+  columnStringResult2 = "0";
+}
+if(columnStringResult3 == "") {
+  columnStringResult3 = "0";
+}
+if(columnStringResult4 == "") {
+  columnStringResult4 = "0";
+}
+if(columnStringResult5 == "") {
+  columnStringResult5 = "0";
+}
 
-console.log(rowString);
-console.log(column);
-console.log(column2);
-console.log(column3);
-console.log(column4);
-console.log(column5);
+console.log(columnStringResult);
 
-document.getElementById("row1").innerHTML = rowStringResult;
+document.getElementById("row").innerHTML = rowStringResult;
 document.getElementById("row2").innerHTML = rowStringResult2;
 document.getElementById("row3").innerHTML = rowStringResult3;
 document.getElementById("row4").innerHTML = rowStringResult4;
 document.getElementById("row5").innerHTML = rowStringResult5;
+
+document.getElementById("column").innerHTML = columnStringResult.charAt(0) + "<br>" + columnStringResult.charAt(2) + "<br>" + columnStringResult.charAt(4);
+document.getElementById("column2").innerHTML = columnStringResult2.charAt(0) + "<br>" + columnStringResult2.charAt(2) + "<br>" + columnStringResult2.charAt(4);
+document.getElementById("column3").innerHTML = columnStringResult3.charAt(0) + "<br>" + columnStringResult3.charAt(2) + "<br>" + columnStringResult3.charAt(4);
+document.getElementById("column4").innerHTML = columnStringResult4.charAt(0) + "<br>" + columnStringResult4.charAt(2) + "<br>" + columnStringResult4.charAt(4);
+document.getElementById("column5").innerHTML = columnStringResult5.charAt(0) + "<br>" + columnStringResult5.charAt(2) + "<br>" + columnStringResult5.charAt(4);
 
   const onClick = (event) => {
       console.log(event.target.id);
