@@ -4,6 +4,7 @@ const children = parent.children;
 const childrenChild = parent.children.childrenChild;
 
 let index = -1;
+let tempBtn = 0;
 
 var column = [];
 var column2 = [];
