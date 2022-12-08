@@ -6,6 +6,8 @@ var gridTotal;
 var cellSize;
 var cells;
 
+var grid = [];
+
 //View
 let closeDiv = `</div>`
 
@@ -21,8 +23,6 @@ let gridItem = `
 let closeGridItem = `
 class="grid-item">
 `
-
-let gridStyle = 100;
 
 let mainHtml = `
 <div id= "grid" class="grid-container">
@@ -64,18 +64,19 @@ let mainHtml = `
 </div>
 `
 
+function gridView() {
+  userGridSize();
+  buildGrid();
+  console.log(gridTotal);
+}
+
 function userGridSize() {
   userInput = parseInt(document.getElementById("input").value);
   template = document.getElementById("container");
 
   userSubmitted = true;
-
   
    gridTotal = userInput * userInput;
-
-  console.log(gridTotal);
-
-  buildGrid();
 }
 
 //Controller
