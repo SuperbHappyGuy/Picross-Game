@@ -5,8 +5,10 @@ var template;
 var gridTotal;
 var cellSize;
 var cells;
+var item;
 
-var grid = [];
+var solution = [];
+var playerSelected = [];
 
 //View
 let closeDiv = `</div>`
@@ -16,13 +18,19 @@ let gridContainer = `
 
 `
 
-let gridItem = `
-<div id= "gridItem"
-`
+let gridItem = "<div id= gridItem"
 
 let closeGridItem = `
 class="grid-item">
+
 `
+let gridColumn = "<div id= column" 
+
+let closeGridColumn = ' class= "popover">test</div><div class="gridNumb">'
+
+let gridRow = "<div id= row"
+
+let closeGridRow = ' class= "popoverSide">test</div><div class="gridNumb">'
 
 let mainHtml = `
 <div id= "grid" class="grid-container">
@@ -64,10 +72,16 @@ let mainHtml = `
 </div>
 `
 
-function gridView() {
+function gridStart() {
   userGridSize();
   buildGrid();
+  solutionBuild();
+  solutionReader();
+  console.log(cellSize);
   console.log(gridTotal);
+  console.log(solution);
+  console.log(solution[1][0]);
+  document.getElementById("gridItem" + 21).style.backgroundColor = "red";
 }
 
 function userGridSize() {
@@ -79,10 +93,32 @@ function userGridSize() {
    gridTotal = userInput * userInput;
 }
 
+function solutionReader() {
+  for(let i = 0; i < userInput; i++) {
+    for(let a = 0; a < userInput; a++) {
+      if(solution[i][a] == true) {
+        solution[i][a] = "yes";
+      }
+      else {
+        solution[i][a] = "no";
+      }
+    }
+  }
+}
+
 //Controller
 function buildGrid() {
-  for(let i = 1; i < gridTotal + 1; i++) { 
-  gridContainer += gridItem + i + closeGridItem + i + closeDiv;
+  for(let i = 1; i < gridTotal + 1; i++) {
+    if(i < userInput + 1){
+      gridContainer += gridItem + i + closeGridItem + gridColumn + i + closeGridColumn + i + closeDiv + closeDiv;
+    }
+    else if(i == (i * userInput) - (userInput - 1)) {
+      gridContainer += gridItem + i + closeGridItem + gridRow + i + closeGridRow + i + closeDiv + closeDiv;
+    }
+    else {
+      gridContainer += gridItem + i + closeGridItem + i + closeDiv;
+    }
+    console.log((i * userInput) - (userInput - 1));
   }
 
   if(userSubmitted == true) {
@@ -97,5 +133,23 @@ function buildGrid() {
   }
 
   document.getElementById("grid").style.gridTemplateColumns = cellSize;
-  console.log(cellSize);
+}
+
+function solutionBuild() {
+  for(let i = 0; i < userInput; i++) {
+    solution[i] = [];
+
+    for(let a = 0; a < userInput; a++) {
+      let rand = Math.floor(Math.random() * 100) + 1;
+      let percent = Math.floor(Math.random() * 100) + 1;
+
+      if(rand >= percent) {
+        solution[i][a] = true;
+
+      }
+      else {
+        solution[i][a] = false;
+      }
+    }
+  }
 }

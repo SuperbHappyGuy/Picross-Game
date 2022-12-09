@@ -1,4 +1,4 @@
-function start() {
+/*function start() {
     tempBtn++;
     document.getElementById("Start").innerHTML = tempBtn;
   }
@@ -13,4 +13,4 @@ function start() {
 
 myFunction().then(data => {
     console.log(data);
-});
+});*/
