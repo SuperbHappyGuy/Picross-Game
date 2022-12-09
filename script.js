@@ -6,9 +6,13 @@ var gridTotal;
 var cellSize;
 var cells;
 var item;
+var targetId;
+var y = 0;
 
 var solution = [];
 var playerSelected = [];
+
+
 
 //View
 let closeDiv = `</div>`
@@ -75,13 +79,16 @@ let mainHtml = `
 function gridStart() {
   userGridSize();
   buildGrid();
+
+  
+
   solutionBuild();
   solutionReader();
-  console.log(cellSize);
-  console.log(gridTotal);
+  playerSelectionArray();
+  playerSelection();
   console.log(solution);
-  console.log(solution[1][0]);
-  document.getElementById("gridItem" + 21).style.backgroundColor = "red";
+  console.log(playerSelected);
+  //document.getElementById("gridItem" + 21).style.backgroundColor = "red";
 }
 
 function userGridSize() {
@@ -106,6 +113,22 @@ function solutionReader() {
   }
 }
 
+function playerSelection() {
+  document.addEventListener('click', (e) =>
+  {
+    let elementId = e.target.id;
+
+    if (document.getElementById(elementId).className == "grid-item") {
+        console.log(elementId);
+        
+        document.getElementById(elementId).style.backgroundColor = "red";
+    }
+    else { 
+        console.log("Non Grid Item.");
+    }
+  });
+}
+
 //Controller
 function buildGrid() {
   for(let i = 1; i < gridTotal + 1; i++) {
@@ -118,7 +141,7 @@ function buildGrid() {
     else {
       gridContainer += gridItem + i + closeGridItem + i + closeDiv;
     }
-    console.log((i * userInput) - (userInput - 1));
+    //console.log((i * userInput) - (userInput - 1));
   }
 
   if(userSubmitted == true) {
@@ -150,6 +173,15 @@ function solutionBuild() {
       else {
         solution[i][a] = false;
       }
+    }
+  }
+}
+
+function playerSelectionArray() {
+  for(let i = 0; i < userInput; i++) {
+    playerSelected[i] = [];
+    for(let a = 0; a < userInput; a++) {
+      playerSelected[i][a] = false;
     }
   }
 }
