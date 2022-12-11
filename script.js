@@ -25,6 +25,8 @@ let closeGridItem = `
 class="grid-item">
 
 `
+let gridNumb = "<div class= gridNumb>"
+
 let gridColumn = "<div id= column" 
 
 let closeGridColumn = ' class= "popover">test</div><div class="gridNumb">'
@@ -84,12 +86,18 @@ function playerSelection() {
 function buildGrid() {
   for(let i = 1; i < gridTotal + 1; i++) {
     if(i < userInput + 1){
-      gridContainer += gridItem + i + closeGridItem + gridColumn + i + closeGridColumn + i + closeDiv + closeDiv;
-    } else if(i == (i * userInput) - (userInput - 1)) {
-      gridContainer += gridItem + i + closeGridItem + gridRow + i + closeGridRow + i + closeDiv + closeDiv;
+      if(i == (i * userInput) - (userInput - 1)) {
+        gridContainer += gridItem + i + closeGridItem + gridRow + i + closeGridRow + closeDiv + gridColumn + i + closeGridColumn + i + closeDiv + closeDiv;
+      } else {
+        gridContainer += gridItem + i + closeGridItem + gridColumn + i + closeGridColumn + i + closeDiv + closeDiv;
+      }
     } else {
-      gridContainer += gridItem + i + closeGridItem + i + closeDiv;
+      if(i == (i * userInput) - (userInput - 1) && i == i * userInput + 1) {
+        gridContainer += gridItem + i + closeGridItem + gridRow + i + closeGridRow + i + closeDiv + closeDiv;
+      }
+      gridContainer += gridItem + i + closeGridItem + /*gridNumb +*/ i + /*closeDiv +*/ closeDiv;
     }
+    
     //console.log((i * userInput) - (userInput - 1));
   }
 
