@@ -11,6 +11,9 @@ var y = 0;
 
 var solution = [];
 var playerSelected = [];
+var grid = [];
+
+
 
 //View
 let closeDiv = `</div>`
@@ -43,7 +46,7 @@ function gridStart() {
   playerSelectionArray();
   playerSelection();
   console.log(solution);
-  console.log(playerSelected);
+  console.log(grid);
 }
 
 function userGridSize() {
@@ -68,17 +71,26 @@ function solutionReader() {
 }
 
 function playerSelection() {
-  document.addEventListener('click', (e) =>
-  {
+  initializeGrid();
+
+  document.addEventListener('click', (e) => {
     let elementId = e.target.id;
 
     if (document.getElementById(elementId).className == "grid-item") {
-        //console.log(elementId);
+        console.log(elementId);
         
         document.getElementById(elementId).style.backgroundColor = "red";
     } else { 
         console.log("Non Grid Item.");
     }
+
+    var result;
+for( var i = 0, len = selected_products.length; i < len; i++ ) {
+    if( selected_products[i][0] === 'r1' ) {
+        result = selected_products[i];
+        break;
+    }
+}
   });
 }
 
@@ -92,13 +104,12 @@ function buildGrid() {
         gridContainer += gridItem + i + closeGridItem + gridColumn + i + closeGridColumn + i + closeDiv + closeDiv;
       }
     } else {
-      if(i == (i * userInput) - (userInput - 1) && i == i * userInput + 1) {
+      if(i % userInput == 1) {
         gridContainer += gridItem + i + closeGridItem + gridRow + i + closeGridRow + i + closeDiv + closeDiv;
+      } else {
+        gridContainer += gridItem + i + closeGridItem + gridNumb + i + closeDiv + closeDiv;
       }
-      gridContainer += gridItem + i + closeGridItem + /*gridNumb +*/ i + /*closeDiv +*/ closeDiv;
     }
-    
-    //console.log((i * userInput) - (userInput - 1));
   }
 
   if(userSubmitted == true) {
@@ -138,5 +149,22 @@ function playerSelectionArray() {
     for(let a = 0; a < userInput; a++) {
       playerSelected[i][a] = false;
     }
+  }
+}
+
+function initializeGrid() {
+  const parent = document.getElementById("grid");
+
+  const children = parent.children;
+  const childrenChild = parent.children.childrenChild;
+
+  let x = 0;
+
+  for(let i = 0; i < userInput; i++) {
+    grid[i] = [];
+      for(let a = 0; a < userInput; a++) {
+        grid[i][a] = children[x].id;
+        x++;
+      } 
   }
 }
