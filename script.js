@@ -1,6 +1,5 @@
 //Model
 var userInput;
-var userSubmitted = false;
 var template;
 var gridTotal;
 var cellSize;
@@ -8,12 +7,17 @@ var cells;
 var item;
 var targetId;
 var y = 0;
+var readInt = 0;
+var readString = "";
 
 var solution = [];
 var playerSelected = [];
+var playerXMarkerSelected = [];
 var grid = [];
 
-
+var userSubmitted = false;
+var markerBool = true;
+var xMarkerBool = false;
 
 //View
 let closeDiv = `</div>`
@@ -46,7 +50,8 @@ function gridStart() {
   playerSelectionArray();
   playerSelection();
   console.log(solution);
-  console.log(grid);
+  console.log(playerSelected);
+  console.log(playerXMarkerSelected);
 }
 
 function userGridSize() {
@@ -62,12 +67,14 @@ function solutionReader() {
   for(let i = 0; i < userInput; i++) {
     for(let a = 0; a < userInput; a++) {
       if(solution[i][a] == true) {
-        //solution[i][a] = "yes";
+        readInt++;
       } else {
-        //solution[i][a] = "no";
+          readString += readInt + "";
+        readInt = 0;
       }
     }
   }
+  document.getElementById("row1").innerHTML = readString;
 }
 
 function playerSelection() {
@@ -78,19 +85,25 @@ function playerSelection() {
 
     if (document.getElementById(elementId).className == "grid-item") {
         console.log(elementId);
-        
-        document.getElementById(elementId).style.backgroundColor = "red";
     } else { 
         console.log("Non Grid Item.");
     }
 
-    var result;
-for( var i = 0, len = selected_products.length; i < len; i++ ) {
-    if( selected_products[i][0] === 'r1' ) {
-        result = selected_products[i];
-        break;
+    for(let i = 0; i < grid.length; i++) {
+      for(let a = 0; a < grid[i].length; a++) {
+        if(grid[i][a] == elementId) {
+          if(playerSelected[i][a] == false) {
+            playerSelected[i][a] = true;
+            document.getElementById(elementId).style.backgroundColor = "black";
+          } else {
+            playerSelected[i][a] = false;
+            document.getElementById(elementId).style.backgroundColor = "white";
+          }
+        }
+      }
     }
-}
+    console.log(playerSelected);
+    winCondition();
   });
 }
 
@@ -122,7 +135,6 @@ function buildGrid() {
   for(let i = 1; i < userInput; i++) {
     cellSize += cells + "% ";
   }
-
   document.getElementById("grid").style.gridTemplateColumns = cellSize;
 }
 
@@ -146,8 +158,10 @@ function solutionBuild() {
 function playerSelectionArray() {
   for(let i = 0; i < userInput; i++) {
     playerSelected[i] = [];
+    playerXMarkerSelected[i] = [];
     for(let a = 0; a < userInput; a++) {
       playerSelected[i][a] = false;
+      playerXMarkerSelected[i][a] = false;
     }
   }
 }
@@ -166,5 +180,26 @@ function initializeGrid() {
         grid[i][a] = children[x].id;
         x++;
       } 
+  }
+}
+
+function winCondition() {
+  if(JSON.stringify(playerSelected) === JSON.stringify(solution)) {
+    console.log("You Win!");
+    document.getElementById("win").innerHTML = "<h1>You Win!</h1>";
+  }
+}
+
+function markerFlags() {
+  if(markerBool == false) {
+    document.getElementById("marker").style.backgroundColor = "black";
+    document.getElementById("xMarker").style.backgroundColor = "lightgray";
+    markerBool = true;
+    xMarkerBool = false;
+  } else {
+    document.getElementById("marker").style.backgroundColor = "lightgray";
+    document.getElementById("xMarker").style.backgroundColor = "black";
+    markerBool = false;
+    xMarkerBool = true;
   }
 }
