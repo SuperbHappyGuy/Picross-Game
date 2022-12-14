@@ -7,8 +7,10 @@ var cells;
 var item;
 var targetId;
 var y = 0;
-var readInt = 0;
-var readString = "";
+
+var hintInt = 0;
+var hintString = "";
+var hintArray =[];
 
 var solution = [];
 var playerSelected = [];
@@ -46,7 +48,7 @@ function gridStart() {
   userGridSize();
   buildGrid();
   solutionBuild();
-  solutionReader();
+  solutionHints();
   playerSelectionArray();
   playerSelection();
   console.log(solution);
@@ -63,18 +65,26 @@ function userGridSize() {
    gridTotal = userInput * userInput;
 }
 
-function solutionReader() {
-  for(let i = 0; i < userInput; i++) {
+function solutionHints() {
+  for(let i = 1; i < userInput + 1; i++) {
     for(let a = 0; a < userInput; a++) {
-      if(solution[i][a] == true) {
-        readInt++;
+      if(solution[i - 1][a] == true) {
+        hintInt++;
       } else {
-          readString += readInt + "";
-        readInt = 0;
+        if(hintInt != 0) {
+          hintString += hintInt + "";
+        }
+        hintInt = 0;
       }
     }
+    document.getElementById("row" + i).innerHTML = hintString;
+      hintString = "";
   }
-  document.getElementById("row1").innerHTML = readString;
+  if(hintInt != 0) {
+    hintString += hintInt + "";
+  }
+  hintInt = 0;
+
 }
 
 function playerSelection() {
@@ -118,7 +128,7 @@ function buildGrid() {
       }
     } else {
       if(i % userInput == 1) {
-        gridContainer += gridItem + i + closeGridItem + gridRow + i + closeGridRow + i + closeDiv + closeDiv;
+        gridContainer += gridItem + i + closeGridItem + gridRow + ((i + userInput - 1) / userInput) + closeGridRow + i + closeDiv + closeDiv;
       } else {
         gridContainer += gridItem + i + closeGridItem + gridNumb + i + closeDiv + closeDiv;
       }
