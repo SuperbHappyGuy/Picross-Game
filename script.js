@@ -10,7 +10,8 @@ var y = 0;
 
 var hintInt = 0;
 var hintString = "";
-var hintArray =[];
+var hintStringAdd = "";
+var x = 0;
 
 var solution = [];
 var playerSelected = [];
@@ -66,25 +67,27 @@ function userGridSize() {
 }
 
 function solutionHints() {
+  rowHints();
+
   for(let i = 1; i < userInput + 1; i++) {
     for(let a = 0; a < userInput; a++) {
-      if(solution[i - 1][a] == true) {
+      if(solution[a][i - 1] == true) {
         hintInt++;
-      } else {
+      } else if(solution[a][i - 1] == false || a == userInput - 1) {
         if(hintInt != 0) {
-          hintString += hintInt + "";
-        }
+         hintString += hintInt;
+        } 
         hintInt = 0;
       }
     }
-    document.getElementById("row" + i).innerHTML = hintString;
-      hintString = "";
-  }
-  if(hintInt != 0) {
-    hintString += hintInt + "";
-  }
-  hintInt = 0;
+    if(hintInt != 0) {
+      hintString += hintInt;
+     } 
+     hintInt = 0;
 
+    document.getElementById("column" + i).innerHTML = hintString;
+    hintString = "";
+  }
 }
 
 function playerSelection() {
@@ -211,5 +214,27 @@ function markerFlags() {
     document.getElementById("xMarker").style.backgroundColor = "black";
     markerBool = false;
     xMarkerBool = true;
+  }
+}
+
+function rowHints() {
+  for(let i = 1; i < userInput + 1; i++) {
+    for(let a = 0; a < userInput; a++) {
+      if(solution[i - 1][a] == true) {
+        hintInt++;
+      } else if(solution[i - 1][a] == false || a == userInput - 1) {
+        if(hintInt != 0) {
+         hintString += hintInt;
+        } 
+        hintInt = 0;
+      }
+    }
+    if(hintInt != 0) {
+      hintString += hintInt;
+     } 
+     hintInt = 0;
+
+    document.getElementById("row" + i).innerHTML = hintString;
+    hintString = "";
   }
 }
