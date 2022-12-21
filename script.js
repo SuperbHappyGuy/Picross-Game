@@ -53,8 +53,6 @@ function gridStart() {
   playerSelectionArray();
   playerSelection();
   console.log(solution);
-  console.log(playerSelected);
-  console.log(playerXMarkerSelected);
 }
 
 function userGridSize() {
@@ -105,17 +103,28 @@ function playerSelection() {
     for(let i = 0; i < grid.length; i++) {
       for(let a = 0; a < grid[i].length; a++) {
         if(grid[i][a] == elementId) {
-          if(playerSelected[i][a] == false) {
+          if(playerSelected[i][a] == false && markerBool == true) {
             playerSelected[i][a] = true;
             document.getElementById(elementId).style.backgroundColor = "black";
           } else {
             playerSelected[i][a] = false;
             document.getElementById(elementId).style.backgroundColor = "white";
           }
+
+          if(playerXMarkerSelected[i][a] == false && xMarkerBool == true) {
+            playerXMarkerSelected[i][a] = true;
+            document.getElementById(elementId).style.backgroundColor = "red";
+          } else {
+            playerXMarkerSelected[i][a] = false;
+            document.getElementById(elementId).style.backgroundColor = "white";
+          }
         }
       }
     }
     console.log(playerSelected);
+    console.log(playerXMarkerSelected);
+    console.log(markerBool);
+    console.log(xMarkerBool);
     winCondition();
   });
 }
@@ -204,7 +213,7 @@ function winCondition() {
 }
 
 function markerFlags() {
-  if(markerBool == false) {
+  if(markerBool == false && xMarkerBool == true) {
     document.getElementById("marker").style.backgroundColor = "black";
     document.getElementById("xMarker").style.backgroundColor = "lightgray";
     markerBool = true;
