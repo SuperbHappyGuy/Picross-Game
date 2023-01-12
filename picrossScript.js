@@ -111,13 +111,13 @@ function playerSelection() {
             document.getElementById(elementId).style.backgroundColor = "white";
           }
 
-          if(playerXMarkerSelected[i][a] == false && xMarkerBool == true) {
+          /*if(playerXMarkerSelected[i][a] == false && xMarkerBool == true) {
             playerXMarkerSelected[i][a] = true;
             document.getElementById(elementId).style.backgroundColor = "red";
           } else {
             playerXMarkerSelected[i][a] = false;
             document.getElementById(elementId).style.backgroundColor = "white";
-          }
+          }*/
         }
       }
     }
