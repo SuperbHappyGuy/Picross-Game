@@ -4,14 +4,9 @@ var template;
 var gridTotal;
 var cellSize;
 var cells;
-var item;
-var targetId;
-var y = 0;
 
 var hintInt = 0;
 var hintString = "";
-var hintStringAdd = "";
-var x = 0;
 
 var solution = [];
 var playerSelected = [];
@@ -19,8 +14,7 @@ var playerXMarkerSelected = [];
 var grid = [];
 
 var userSubmitted = false;
-var markerBool = true;
-var xMarkerBool = false;
+var win = false;
 
 //View
 let closeDiv = `</div>`
@@ -46,6 +40,7 @@ let gridRow = "<div id= row"
 let closeGridRow = ' class= "popoverSide">test</div><div class="gridNumb">'
 
 function gridStart() {
+  timer();
   userGridSize();
   buildGrid();
   solutionBuild();
@@ -78,10 +73,14 @@ function solutionHints() {
         hintInt = 0;
       }
     }
-    if(hintInt != 0) {
-      hintString += hintInt;
-     } 
+      if(hintInt != 0) {
+        hintString += hintInt;
+      } 
      hintInt = 0;
+
+     if(hintString == "") {
+      hintString = "0";
+     }
 
     document.getElementById("column" + i).innerHTML = hintString;
     hintString = "";
@@ -103,28 +102,22 @@ function playerSelection() {
     for(let i = 0; i < grid.length; i++) {
       for(let a = 0; a < grid[i].length; a++) {
         if(grid[i][a] == elementId) {
-          if(playerSelected[i][a] == false && markerBool == true) {
+          if(playerSelected[i][a] == false && playerXMarkerSelected[i][a] == false) {
             playerSelected[i][a] = true;
             document.getElementById(elementId).style.backgroundColor = "black";
-          } else {
+          } else if(playerSelected[i][a] == true && playerXMarkerSelected[i][a] == false) {
             playerSelected[i][a] = false;
-            document.getElementById(elementId).style.backgroundColor = "white";
-          }
-
-          /*if(playerXMarkerSelected[i][a] == false && xMarkerBool == true) {
             playerXMarkerSelected[i][a] = true;
             document.getElementById(elementId).style.backgroundColor = "red";
-          } else {
+          } else if(playerXMarkerSelected[i][a] == true && playerSelected[i][a] == false) {
             playerXMarkerSelected[i][a] = false;
             document.getElementById(elementId).style.backgroundColor = "white";
-          }*/
+          }
         }
       }
     }
     console.log(playerSelected);
     console.log(playerXMarkerSelected);
-    console.log(markerBool);
-    console.log(xMarkerBool);
     winCondition();
   });
 }
@@ -206,23 +199,13 @@ function initializeGrid() {
 }
 
 function winCondition() {
-  if(JSON.stringify(playerSelected) === JSON.stringify(solution)) {
+  if(JSON.stringify(playerSelected) === JSON.stringify(solution) && win == false) {
     console.log("You Win!");
-    document.getElementById("win").innerHTML = "<h1>You Win!</h1>";
-  }
-}
-
-function markerFlags() {
-  if(markerBool == false && xMarkerBool == true) {
-    document.getElementById("marker").style.backgroundColor = "black";
-    document.getElementById("xMarker").style.backgroundColor = "lightgray";
-    markerBool = true;
-    xMarkerBool = false;
-  } else {
-    document.getElementById("marker").style.backgroundColor = "lightgray";
-    document.getElementById("xMarker").style.backgroundColor = "black";
-    markerBool = false;
-    xMarkerBool = true;
+    document.getElementById("win").innerHTML = `<h1>You Win!</h1>
+                                                Name: <input id= "scoreName" type="text" name="score">
+                                                <input id="btn" type="button" onclick="postScore()" value="Submit">
+                                               `;
+    win = true;
   }
 }
 
@@ -242,6 +225,10 @@ function rowHints() {
       hintString += hintInt;
      } 
      hintInt = 0;
+
+     if(hintString == "") {
+      hintString = "0";
+     }
 
     document.getElementById("row" + i).innerHTML = hintString;
     hintString = "";
