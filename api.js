@@ -4,15 +4,16 @@ let publicurl = 'https://keepthescore.co/api/wgojtsdnqkr/board/'
 let editurl = 'https://keepthescore.co/api/vrohqyhlile'
 
 var score = 0;
+var nameFound = false;
 
 var playerID;
+var playerScore;
 
 function postScore() {
-    setTimeout(getNewPlayer, 1000);
+    setTimeout(getPlayer, 1000);
     setTimeout(postNewPlayerScore, 2000);
-    postNewPlayer();
-    getNewPlayer();
-    postNewPlayerScore();
+    
+    getPlayer();
 }
 
 async function postNewPlayer() {
@@ -29,9 +30,10 @@ async function postNewPlayer() {
     });
     
     console.log(await response);
+    getPlayer();
 }
 
-async function getNewPlayer() {
+async function getPlayer() {
     fetch(`${publicurl}`)
     .then(response => response.json())
     .then(data => {
@@ -40,15 +42,35 @@ async function getNewPlayer() {
         if(data.players[i].name == document.getElementById("scoreName").value) {
             console.log("name found");
             playerID = data.players[i].id
+            playerScore = data.players.score;
+            nameFound = true;
+
+            if(data.players[i].score == 0) {
+                postNewPlayerScore
+            } else {
+                if(data.players[i].score > score) {
+                    postRefreshPlayerScore();
+                    postNewPlayerScore();
+                } else {
+                    console.log("No new high score!")
+                }
+            }
         }
     }
+
+    if(nameFound == false) {
+        postNewPlayer();
+    }
+
+    nameFound = false;
+
     console.log(playerID);
     })
     .catch(error => console.error(error));
 }
 
 async function postNewPlayerScore() {
-    let newPlayer = {
+    let newScore = {
         "player_id": playerID,
         "score": score,
     };
@@ -58,7 +80,15 @@ async function postNewPlayerScore() {
             'Content-Type': 'application/json',
             'accept': '*/*',
         },
-        body: JSON.stringify(newPlayer)
+        body: JSON.stringify(newScore)
+    });
+    
+    console.log(await response);
+}
+
+async function postRefreshPlayerScore() {
+    let response = fetch(`${editurl}/player/${playerID}`, {
+        method: 'DELETE',
     });
     
     console.log(await response);
