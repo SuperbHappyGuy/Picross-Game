@@ -1,6 +1,4 @@
-let editId = 'vrohqyhlile';
-let publicId = 'wgojtsdnqkr';
-let publicurl = 'https://keepthescore.co/api/wgojtsdnqkr/board/'
+let publicurl = 'https://keepthescore.co/api/wgojtsdnqkr'
 let editurl = 'https://keepthescore.co/api/vrohqyhlile'
 
 var score = 0;
@@ -8,6 +6,7 @@ var nameFound = false;
 
 var playerID;
 var playerScore;
+var timers;
 
 function postScore() {
     setTimeout(getPlayer, 1000);
@@ -33,11 +32,11 @@ async function postNewPlayer() {
     getPlayer();
 }
 
-async function getPlayer() {
-    fetch(`${publicurl}`)
+async function getPlayer(public,edit) {
+    fetch(`${public}/board/`)
     .then(response => response.json())
     .then(data => {
-
+        
     for(let i = 0; i < data.players.length; i++) {
         if(data.players[i].name == document.getElementById("scoreName").value) {
             console.log("name found");
@@ -69,12 +68,12 @@ async function getPlayer() {
     .catch(error => console.error(error));
 }
 
-async function postNewPlayerScore() {
+async function postNewPlayerScore(edit) {
     let newScore = {
         "player_id": playerID,
         "score": score,
     };
-    let response = fetch(`${editurl}/score/`, {
+    let response = fetch(`${edit}/score/`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -86,8 +85,8 @@ async function postNewPlayerScore() {
     console.log(await response);
 }
 
-async function postRefreshPlayerScore() {
-    let response = fetch(`${editurl}/player/${playerID}`, {
+async function postRefreshPlayerScore(edit) {
+    let response = fetch(`${edit}/player/${playerID}`, {
         method: 'DELETE',
     });
     
@@ -98,7 +97,7 @@ function timer() {
     var sec = 0;
     var min = 0;
     var hour = 0;
-    var timer = setInterval(function(){
+    timers = setInterval(function(){
       if(sec == 60) {
         sec = 0;
         min++;
@@ -108,7 +107,17 @@ function timer() {
         hour++;
       }
       document.getElementById('time').innerHTML= hour + ":" + min + ":" + sec;
-      sec++;
-      score++;
+
+      if(win == false) {
+        sec++;
+        score++;
+      }
+      
     }, 1000);
+  }
+
+  function gridSizeLeaderBoards() {
+    if(userInput == 2) {
+
+    }
   }
