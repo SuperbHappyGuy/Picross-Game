@@ -1,9 +1,81 @@
-let publicList = [
-    `https://keepthescore.co/api/olmzfywrzse`,
-
+var publicList = [
+    //2x2
+    `https://keepthescore.co/api/ghavbyumrqr`,
+    //3x3
+    `https://keepthescore.co/api/khsnkqlogzr`,
+    //4x4
+    `https://keepthescore.co/api/fpsfslhgovr`,
+    //5x5
+    `https://keepthescore.co/api/gvpklbctqwr`,
+    //6x6
+    `https://keepthescore.co/api/ctcyyimtqdr`,
+    //7x7
+    `https://keepthescore.co/api/wemsxeaggbr`,
+    //8x8
+    `https://keepthescore.co/api/ftcpupfgetr`,
+    //9x9
+    `https://keepthescore.co/api/vsshwrlpehr`,
+    //10x10
+    `https://keepthescore.co/api/huthpewcyyr`,
+    //11x11
+    `https://keepthescore.co/api/tamnrivxyhr`,
+    //12x12
+    `https://keepthescore.co/api/aatuqdrssyr`,
+    //13x13
+    `https://keepthescore.co/api/ivflztzasmr`,
+    //14x14
+    `https://keepthescore.co/api/ytndwxiqinr`,
+    //15x15
+    `https://keepthescore.co/api/yrhsnklnycr`,
+    //16x16
+    `https://keepthescore.co/api/cgxvlkiqztr`,
+    //17x17
+    `https://keepthescore.co/api/wtecqeytfkr`,
+    //18x18
+    `https://keepthescore.co/api/dwlvjdhceir`,
+    //19x19
+    `https://keepthescore.co/api/wddmjhqceur`,
+    //20x20
+    `https://keepthescore.co/api/qasriesygtr`,
 ];
 
-let editList = [
-    'https://keepthescore.co/api/ghavbyumrqr',
-
+var editList = [
+    //2x2
+    'https://keepthescore.co/api/olmzfywrzse',
+    //3x3
+    `https://keepthescore.co/api/tqcxudksdbe`,
+    //4x4
+    `https://keepthescore.co/api/rwhqnslmbbe`,
+    //5x5
+    `https://keepthescore.co/api/viifylfvkve`,
+    //6x6
+    `https://keepthescore.co/api/ivnpeyksoie`,
+    //7x7
+    `https://keepthescore.co/api/osvbjkannqe`,
+    //8x8
+    `https://keepthescore.co/api/qgykzodubte`,
+    //9x9
+    `https://keepthescore.co/api/ecdpqnmnzpe`,
+    //10x10
+    `https://keepthescore.co/api/jzekzrzskhe`,
+    //11x11
+    `https://keepthescore.co/api/yqnweqflyme`,
+    //12x12
+    `https://keepthescore.co/api/rbpfsnfmlfe`,
+    //13x13
+    `https://keepthescore.co/api/lzsgysydsze`,
+    //14x14
+    `https://keepthescore.co/api/ggmwwetbege`,
+    //15x15
+    `https://keepthescore.co/api/oucnkyecrhe`,
+    //16x16
+    `https://keepthescore.co/api/ihvypnxigse`,
+    //17x17
+    `https://keepthescore.co/api/mwzcdzqfene`,
+    //18x18
+    `https://keepthescore.co/api/zefvaoaztte`,
+    //19x19
+    `https://keepthescore.co/api/uxyeacovgye`,
+    //20x20
+    `https://keepthescore.co/api/whysdbdruce`,
 ];

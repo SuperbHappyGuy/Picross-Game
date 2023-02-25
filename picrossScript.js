@@ -16,6 +16,9 @@ var grid = [];
 var userSubmitted = false;
 var win = false;
 
+var timers;
+var score = 0;
+
 //View
 let closeDiv = `</div>`
 
@@ -233,4 +236,27 @@ function rowHints() {
     document.getElementById("row" + i).innerHTML = hintString;
     hintString = "";
   }
+}
+
+function timer() {
+  var sec = 0;
+  var min = 0;
+  var hour = 0;
+  timers = setInterval(function(){
+    if(sec == 60) {
+      sec = 0;
+      min++;
+    }
+    if(min == 60) {
+      min = 0;
+      hour++;
+    }
+    document.getElementById('time').innerHTML= hour + ":" + min + ":" + sec;
+
+    if(win == false) {
+      sec++;
+      score++;
+    }
+    
+  }, 1000);
 }

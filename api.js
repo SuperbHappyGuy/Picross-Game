@@ -1,25 +1,20 @@
-let publicurl = 'https://keepthescore.co/api/wgojtsdnqkr'
-let editurl = 'https://keepthescore.co/api/vrohqyhlile'
-
-var score = 0;
 var nameFound = false;
 
 var playerID;
 var playerScore;
-var timers;
 
 function postScore() {
     setTimeout(getPlayer, 1000);
     setTimeout(postNewPlayerScore, 2000);
     
-    getPlayer();
+    getPlayer(publicList[userInput - 2]);
 }
 
-async function postNewPlayer() {
+async function postNewPlayer(edit) {
     let newPlayer = {
         "name": document.getElementById("scoreName").value,
     };
-    let response = fetch(`${editurl}/player/`, {
+    let response = fetch(`${edit}/player/`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -29,10 +24,10 @@ async function postNewPlayer() {
     });
     
     console.log(await response);
-    getPlayer();
+    getPlayer(publicList[userInput - 2]);
 }
 
-async function getPlayer(public,edit) {
+async function getPlayer(public) {
     fetch(`${public}/board/`)
     .then(response => response.json())
     .then(data => {
@@ -45,11 +40,11 @@ async function getPlayer(public,edit) {
             nameFound = true;
 
             if(data.players[i].score == 0) {
-                postNewPlayerScore
+                postNewPlayerScore(editList[userInput - 2]);
             } else {
                 if(data.players[i].score > score) {
-                    postRefreshPlayerScore();
-                    postNewPlayerScore();
+                    postRefreshPlayerScore(editList[userInput - 2]);
+                    postNewPlayerScore(editList[userInput - 2]);
                 } else {
                     console.log("No new high score!")
                 }
@@ -58,7 +53,7 @@ async function getPlayer(public,edit) {
     }
 
     if(nameFound == false) {
-        postNewPlayer();
+        postNewPlayer(editList[userInput - 2]);
     }
 
     nameFound = false;
@@ -93,28 +88,7 @@ async function postRefreshPlayerScore(edit) {
     console.log(await response);
 }
 
-function timer() {
-    var sec = 0;
-    var min = 0;
-    var hour = 0;
-    timers = setInterval(function(){
-      if(sec == 60) {
-        sec = 0;
-        min++;
-      }
-      if(min == 60) {
-        min = 0;
-        hour++;
-      }
-      document.getElementById('time').innerHTML= hour + ":" + min + ":" + sec;
 
-      if(win == false) {
-        sec++;
-        score++;
-      }
-      
-    }, 1000);
-  }
 
   function gridSizeLeaderBoards() {
     if(userInput == 2) {
