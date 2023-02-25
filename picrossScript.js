@@ -50,6 +50,7 @@ function gridStart() {
   solutionHints();
   playerSelectionArray();
   playerSelection();
+  getLeaderBoard(publicList[userInput - 2]);
 }
 
 function userGridSize() {

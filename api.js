@@ -87,3 +87,16 @@ async function postRefreshPlayerScore(edit) {
     
     console.log(await response);
 }
+
+async function getLeaderBoard(public) {
+    fetch(`${public}/board/`)
+    .then(response => response.json())
+    .then(data => {
+        let x = "";
+        for(let i = 0; i < data.players.length; i++) {
+            x += `Scores: ` + data.players[i].name + ": " + data.players[i].score + "s" + "<br>";
+        }
+        document.getElementById("leaderBoard").innerHTML = x;
+    })
+    .catch(error => console.error(error));
+}
