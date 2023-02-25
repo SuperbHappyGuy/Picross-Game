@@ -50,7 +50,6 @@ function gridStart() {
   solutionHints();
   playerSelectionArray();
   playerSelection();
-  console.log(solution);
 }
 
 function userGridSize() {
@@ -119,8 +118,6 @@ function playerSelection() {
         }
       }
     }
-    console.log(playerSelected);
-    console.log(playerXMarkerSelected);
     winCondition();
   });
 }

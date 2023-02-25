@@ -87,11 +87,3 @@ async function postRefreshPlayerScore(edit) {
     
     console.log(await response);
 }
-
-
-
-  function gridSizeLeaderBoards() {
-    if(userInput == 2) {
-
-    }
-  }
