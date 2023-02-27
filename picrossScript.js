@@ -5,6 +5,8 @@ var gridTotal;
 var cellSize;
 var cells;
 
+var cellIncrement;
+
 var hintInt = 0;
 var hintString = "";
 
@@ -12,12 +14,19 @@ var solution = [];
 var playerSelected = [];
 var playerXMarkerSelected = [];
 var grid = [];
+var fullGrid = [];
+var gridIDs = [];
+var allTrue = [];
 
 var userSubmitted = false;
 var win = false;
+var errorChecked = false;
 
 var timers;
 var score = 0;
+var sec = 0;
+var min = 0;
+var hour = 0;
 
 //View
 let closeDiv = `</div>`
@@ -119,6 +128,11 @@ function playerSelection() {
         }
       }
     }
+    if(errorChecked == false) {
+      errorCheck();
+    }
+    console.log(fullGrid);
+    console.log(allTrue);
     winCondition();
   });
 }
@@ -237,9 +251,6 @@ function rowHints() {
 }
 
 function timer() {
-  var sec = 0;
-  var min = 0;
-  var hour = 0;
   timers = setInterval(function(){
     if(sec == 60) {
       sec = 0;
@@ -254,7 +265,50 @@ function timer() {
     if(win == false) {
       sec++;
       score++;
+      if(errorChecked == false) {
+        errorCheck();
+      }
     }
-    
   }, 1000);
+}
+
+function errorCheck() {
+  for(let i = 0; i < userInput; i++) {
+    fullGrid[i] = [];
+    allTrue[i] = [];
+    for(let a = 0; a < userInput; a++) {
+      allTrue[i][a] = true;
+
+      if(playerSelected[i][a] == true) {
+        fullGrid[i][a] = true;
+      }
+
+      if(playerXMarkerSelected[i][a] == true) {
+        fullGrid[i][a] = true;
+      }
+    }
+  }
+  if(JSON.stringify(fullGrid) === JSON.stringify(allTrue)) {
+    solutionCheck();
+    errorChecked = true;
+  }
+}
+
+function solutionCheck() {
+  for(let i = 0; i < userInput; i++) {
+    for(let a = 0; a < userInput; a++) {
+      cellIncrement++;
+      if(playerSelected[i][a] != solution[i][a]) {
+        document.getElementById(grid[i][a]).style.backgroundColor = "yellow";
+        hour++;
+        score += 3600;
+      }
+
+      if(playerXMarkerSelected[i][a] == solution[i][a]) {
+        document.getElementById(grid[i][a]).style.backgroundColor = "yellow";
+        hour++;
+        score += 3600;
+      }
+    }
+  }
 }
