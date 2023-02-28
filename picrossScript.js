@@ -102,7 +102,7 @@ function solutionHints() {
 function playerSelection() {
   initializeGrid();
 
-  document.addEventListener('click', (e) => {
+  document.addEventListener('mousedown', (e) => {
     let elementId = e.target.id;
 
     if (document.getElementById(elementId).className == "grid-item") {
@@ -114,16 +114,23 @@ function playerSelection() {
     for(let i = 0; i < grid.length; i++) {
       for(let a = 0; a < grid[i].length; a++) {
         if(grid[i][a] == elementId) {
-          if(playerSelected[i][a] == false && playerXMarkerSelected[i][a] == false) {
+          if(e.button == 0 && playerSelected[i][a] == false) {
             playerSelected[i][a] = true;
+            playerXMarkerSelected[i][a] = false;
             document.getElementById(elementId).style.backgroundColor = "black";
-          } else if(playerSelected[i][a] == true && playerXMarkerSelected[i][a] == false) {
+          } else if(playerSelected[i][a] == true && e.button == 0) {
+            playerSelected[i][a] = false;
+            document.getElementById(elementId).style.backgroundColor = "white";
+            document.getElementById(elementId).style.backgroundImage = "none";
+          }
+          
+          if(e.button == 2 && playerXMarkerSelected[i][a] == false) {
             playerSelected[i][a] = false;
             playerXMarkerSelected[i][a] = true;
             document.getElementById(elementId).style.backgroundImage = "url(./Imgs/xMarker.png)";
             document.getElementById(elementId).style.backgroundSize = "90px 90px";
             document.getElementById(elementId).style.backgroundColor = "white";
-          } else if(playerXMarkerSelected[i][a] == true && playerSelected[i][a] == false) {
+          } else if(playerXMarkerSelected[i][a] == true && e.button == 2) {
             playerXMarkerSelected[i][a] = false;
             document.getElementById(elementId).style.backgroundColor = "white";
             document.getElementById(elementId).style.backgroundImage = "none";
@@ -138,6 +145,12 @@ function playerSelection() {
     console.log(allTrue);
     winCondition();
   });
+
+  window.addEventListener('contextmenu', (event) => {
+
+      event.preventDefault();
+      console.log("right click");
+    });
 }
 
 //Controller
