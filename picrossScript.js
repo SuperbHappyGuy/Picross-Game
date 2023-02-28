@@ -120,10 +120,13 @@ function playerSelection() {
           } else if(playerSelected[i][a] == true && playerXMarkerSelected[i][a] == false) {
             playerSelected[i][a] = false;
             playerXMarkerSelected[i][a] = true;
-            document.getElementById(elementId).style.backgroundColor = "red";
+            document.getElementById(elementId).style.backgroundImage = "url(./Imgs/xMarker.png)";
+            document.getElementById(elementId).style.backgroundSize = "90px 90px";
+            document.getElementById(elementId).style.backgroundColor = "white";
           } else if(playerXMarkerSelected[i][a] == true && playerSelected[i][a] == false) {
             playerXMarkerSelected[i][a] = false;
             document.getElementById(elementId).style.backgroundColor = "white";
+            document.getElementById(elementId).style.backgroundImage = "none";
           }
         }
       }
@@ -299,13 +302,14 @@ function solutionCheck() {
     for(let a = 0; a < userInput; a++) {
       cellIncrement++;
       if(playerSelected[i][a] != solution[i][a]) {
-        document.getElementById(grid[i][a]).style.backgroundColor = "yellow";
+        document.getElementById(grid[i][a]).style.backgroundcolor = "red";
         hour++;
         score += 3600;
       }
 
       if(playerXMarkerSelected[i][a] == solution[i][a]) {
-        document.getElementById(grid[i][a]).style.backgroundColor = "yellow";
+        document.getElementById(grid[i][a]).style.backgroundColor = "red";
+        
         hour++;
         score += 3600;
       }
