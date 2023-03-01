@@ -83,7 +83,7 @@ function solutionHints() {
         hintInt++;
       } else if(solution[a][i - 1] == false || a == userInput - 1) {
         if(hintInt != 0) {
-         hintString += hintInt;
+         hintString += hintInt + "<br>";
         } 
         hintInt = 0;
       }
