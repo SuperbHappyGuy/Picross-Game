@@ -21,6 +21,9 @@ var allTrue = [];
 var userSubmitted = false;
 var win = false;
 var errorChecked = false;
+var mouseIsDown = false;
+var leftMouse = false;
+var rightMouse = false;
 
 var timers;
 var score = 0;
@@ -103,6 +106,7 @@ function playerSelection() {
   initializeGrid();
 
   document.addEventListener('mousedown', (e) => {
+    mouseIsDown = true;
     let elementId = e.target.id;
 
     if (document.getElementById(elementId).className == "grid-item") {
@@ -115,22 +119,26 @@ function playerSelection() {
       for(let a = 0; a < grid[i].length; a++) {
         if(grid[i][a] == elementId) {
           if(e.button == 0 && playerSelected[i][a] == false) {
+            leftMouse = true;
             playerSelected[i][a] = true;
             playerXMarkerSelected[i][a] = false;
             document.getElementById(elementId).style.backgroundColor = "black";
           } else if(playerSelected[i][a] == true && e.button == 0) {
+            leftMouse = true;
             playerSelected[i][a] = false;
             document.getElementById(elementId).style.backgroundColor = "white";
             document.getElementById(elementId).style.backgroundImage = "none";
           }
           
           if(e.button == 2 && playerXMarkerSelected[i][a] == false) {
+            rightMouse = true;
             playerSelected[i][a] = false;
             playerXMarkerSelected[i][a] = true;
             document.getElementById(elementId).style.backgroundImage = "url(./Imgs/xMarker.png)";
             document.getElementById(elementId).style.backgroundSize = "90px 90px";
             document.getElementById(elementId).style.backgroundColor = "white";
           } else if(playerXMarkerSelected[i][a] == true && e.button == 2) {
+            rightMouse = true;
             playerXMarkerSelected[i][a] = false;
             document.getElementById(elementId).style.backgroundColor = "white";
             document.getElementById(elementId).style.backgroundImage = "none";
@@ -145,6 +153,12 @@ function playerSelection() {
     console.log(allTrue);
     winCondition();
   });
+
+  document.addEventListener(`mouseup`, (event) => {
+    mouseIsDown = false;
+    leftMouse = false;
+    rightMouse = false;
+  })
 
   document.addEventListener('contextmenu', (event) => {
       let elementId = event.target.id;
@@ -228,7 +242,7 @@ function solutionBuild() {
       let rand = Math.floor(Math.random() * 100) + 1;
       let percent = Math.floor(Math.random() * 100) + 1;
 
-      if(rand >= percent) {
+      if(rand >= 45) {
         solution[i][a] = true;
       } else {
         solution[i][a] = false;
