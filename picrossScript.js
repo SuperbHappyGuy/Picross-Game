@@ -146,10 +146,46 @@ function playerSelection() {
     winCondition();
   });
 
-  window.addEventListener('contextmenu', (event) => {
+  document.addEventListener('contextmenu', (event) => {
+      let elementId = event.target.id;
 
+      if (document.getElementById(elementId).className == "grid-item") {
       event.preventDefault();
-      console.log("right click");
+      } 
+    });
+
+    document.addEventListener('mouseover', (event) => {
+      let elementId = event.target.id;
+
+      if (document.getElementById(elementId).className == "grid-item") {
+        for(let i = 0; i < grid.length; i++) {
+          for(let a = 0; a < grid[i].length; a++) {
+            if(grid[i][a] == elementId) {
+              for(let x = 0; x < userInput; x++) {
+                document.getElementById(grid[i][(a % 1) + x]).style.boxShadow = "inset 0 0 0 1000px rgba(0,0,255,0.12)";
+                document.getElementById(grid[(i % 1) + x][a]).style.boxShadow = "inset 0 0 0 1000px rgba(0,0,255,0.12)";
+              }
+            }
+          }
+        }
+      }
+    });
+
+    document.addEventListener('mouseout', (event) => {
+      let elementId = event.target.id;
+
+      if (document.getElementById(elementId).className == "grid-item") {
+        for(let i = 0; i < grid.length; i++) {
+          for(let a = 0; a < grid[i].length; a++) {
+            if(grid[i][a] == elementId) {
+              for(let x = 0; x < (userInput); x++) {
+                document.getElementById(grid[i][(a % 1) + x]).style.boxShadow = "inset 0 0 0 1000px rgba(0,0,0,0.0)";
+                document.getElementById(grid[(i % 1) + x][a]).style.boxShadow = "inset 0 0 0 1000px rgba(0,0,0,0)";
+              }
+            }
+          }
+        }
+      }
     });
 }
 
