@@ -44,15 +44,21 @@ let closeGridItem = `
 class="grid-item">
 
 `
-let gridNumb = "<div class= gridNumb>"
-
 let gridColumn = "<div id= column" 
 
-let closeGridColumn = ' class= "popover">test</div><div class="gridNumb">'
+let closeGridColumn = ' class= "popover">test</div><div id="columnHint'
+
+let closeGridColumnInside = ' class= "popover">'
 
 let gridRow = "<div id= row"
 
-let closeGridRow = ' class= "popoverSide">test</div><div class="gridNumb">'
+let closeGridRow = ' class= "popoverSide">test</div><div id="rowHint'
+
+let closeHint = '">'
+
+var gridRowAmount;
+var gridHintAmount;
+var hintAmountLetter = "abcdefghijklmnopqrstuvwxyz";
 
 function gridStart() {
   timer();
@@ -60,6 +66,7 @@ function gridStart() {
   buildGrid();
   solutionBuild();
   solutionHints();
+  hintSquareAmount();
   playerSelectionArray();
   playerSelection();
   getLeaderBoard(publicList[userInput - 2]);
@@ -83,7 +90,7 @@ function solutionHints() {
         hintInt++;
       } else if(solution[a][i - 1] == false || a == userInput - 1) {
         if(hintInt != 0) {
-         hintString += hintInt + "<br>";
+         hintString += hintInt;
         } 
         hintInt = 0;
       }
@@ -150,11 +157,8 @@ function playerSelection() {
     if(errorChecked == false) {
       errorCheck();
     }
-    console.log(fullGrid);
-    console.log(allTrue);
-    console.log(playerSelected);
-    console.log(playerXMarkerSelected);
     winCondition();
+  console.log(document.getElementById("row1").innerHTML[0]);
   });
 
   document.addEventListener(`mouseup`, (event) => {
@@ -237,19 +241,31 @@ function playerSelection() {
 }
 
 //Controller
+function hintSquareAmount() {
+  for(let i = 1; i < userInput + 1; i++) {
+    for(let a = 0; a < document.getElementById("column" + i).innerHTML.length - 1; a++) {
+      gridHintAmount = gridColumn + i + hintAmountLetter[a] + closeGridColumnInside + document.getElementById("column" + i).innerHTML[a + 1] + closeDiv;
+      document.getElementById("columnHint" + i).innerHTML += gridHintAmount;
+      //document.getElementById("column" + i).style.top = -200 + (document.getElementById("column" + i).innerHTML.length * -95) + "px";
+      //document.getElementById("column" + i + hintAmountLetter[a]).style.top = -200 + (document.getElementById("column" + i).innerHTML.length - a * -95) + "px";
+    }
+    document.getElementById("column" + i).innerHTML = document.getElementById("column" + i).innerHTML[0];
+  }
+}
+
 function buildGrid() {
   for(let i = 1; i < gridTotal + 1; i++) {
     if(i < userInput + 1){
       if(i == (i * userInput) - (userInput - 1)) {
-        gridContainer += gridItem + i + closeGridItem + gridRow + i + closeGridRow + closeDiv + gridColumn + i + closeGridColumn + i + closeDiv + closeDiv;
+        gridContainer += gridItem + i + closeGridItem + gridRow + i + closeGridRow + i + closeHint + closeDiv + gridColumn + i + closeGridColumn + i + closeHint + closeDiv + closeDiv;
       } else {
-        gridContainer += gridItem + i + closeGridItem + gridColumn + i + closeGridColumn + i + closeDiv + closeDiv;
+        gridContainer += gridItem + i + closeGridItem + gridColumn + i + closeGridColumn + i + closeHint + closeDiv + closeDiv;
       }
     } else {
       if(i % userInput == 1) {
-        gridContainer += gridItem + i + closeGridItem + gridRow + ((i + userInput - 1) / userInput) + closeGridRow + i + closeDiv + closeDiv;
+        gridContainer += gridItem + i + closeGridItem + gridRow + ((i + userInput - 1) / userInput) + closeGridRow + i + closeHint + closeDiv + closeDiv;
       } else {
-        gridContainer += gridItem + i + closeGridItem + gridNumb + i + closeDiv + closeDiv;
+        gridContainer += gridItem + i + closeGridItem + closeDiv;
       }
     }
   }
