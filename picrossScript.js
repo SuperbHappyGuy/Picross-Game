@@ -54,6 +54,8 @@ let gridRow = "<div id= row"
 
 let closeGridRow = ' class= "popoverSide">test</div><div id="rowHint'
 
+let closeGridRowInside = ` class= "popoverSide">`
+
 let closeHint = '">'
 
 var gridRowAmount;
@@ -246,10 +248,18 @@ function hintSquareAmount() {
     for(let a = 0; a < document.getElementById("column" + i).innerHTML.length - 1; a++) {
       gridHintAmount = gridColumn + i + hintAmountLetter[a] + closeGridColumnInside + document.getElementById("column" + i).innerHTML[a + 1] + closeDiv;
       document.getElementById("columnHint" + i).innerHTML += gridHintAmount;
-      //document.getElementById("column" + i).style.top = -200 + (document.getElementById("column" + i).innerHTML.length * -95) + "px";
-      //document.getElementById("column" + i + hintAmountLetter[a]).style.top = -200 + (document.getElementById("column" + i).innerHTML.length - a * -95) + "px";
+      document.getElementById("column" + i).style.top = -200 + ((document.getElementById("column" + i).innerHTML.length - 2) * -93) + "px";
+      document.getElementById("column" + i + hintAmountLetter[a]).style.top = -200 + (((document.getElementById("column" + i).innerHTML.length - 3) - a) * -93) + "px";
     }
     document.getElementById("column" + i).innerHTML = document.getElementById("column" + i).innerHTML[0];
+
+    for(let a = 0; a < document.getElementById("row" + i).innerHTML.length - 1; a++) {
+      gridHintAmount = gridRow + i + hintAmountLetter[a] + closeGridRowInside + document.getElementById("row" + i).innerHTML[a + 1] + closeDiv;
+      document.getElementById("rowHint" + i).innerHTML += gridHintAmount;
+      document.getElementById("row" + i).style.left = -142 + ((document.getElementById("row" + i).innerHTML.length - 2) * -93) + "px";
+      document.getElementById("row" + i + hintAmountLetter[a]).style.left = -142 + (((document.getElementById("row" + i).innerHTML.length - 3) - a) * -93) + "px";
+    }
+    document.getElementById("row" + i).innerHTML = document.getElementById("row" + i).innerHTML[0];
   }
 }
 
@@ -263,7 +273,7 @@ function buildGrid() {
       }
     } else {
       if(i % userInput == 1) {
-        gridContainer += gridItem + i + closeGridItem + gridRow + ((i + userInput - 1) / userInput) + closeGridRow + i + closeHint + closeDiv + closeDiv;
+        gridContainer += gridItem + i + closeGridItem + gridRow + ((i + userInput - 1) / userInput) + closeGridRow + ((i + userInput - 1) / userInput) + closeHint + closeDiv + closeDiv;
       } else {
         gridContainer += gridItem + i + closeGridItem + closeDiv;
       }
