@@ -24,6 +24,7 @@ var errorChecked = false;
 var mouseIsDown = false;
 var leftMouse = false;
 var rightMouse = false;
+var mobile = false;
 
 var timers;
 var score = 0;
@@ -63,6 +64,7 @@ var gridHintAmount;
 var hintAmountLetter = "abcdefghijklmnopqrstuvwxyz";
 
 function gridStart() {
+  mobileCheck();
   timer();
   userGridSize();
   buildGrid();
@@ -114,6 +116,7 @@ function solutionHints() {
 function playerSelection() {
   initializeGrid();
 
+  if(mobile == false) {
   document.addEventListener('mousedown', (e) => {
     mouseIsDown = true;
     let elementId = e.target.id;
@@ -161,6 +164,7 @@ function playerSelection() {
     }
     winCondition();
   });
+}
 
   document.addEventListener('ontouchstart', (event) => {
     mouseIsDown = true;
@@ -271,6 +275,7 @@ function playerSelection() {
       } 
     });
 
+    if(mobile == false) {
     document.addEventListener('mouseover', (event) => {
       let elementId = event.target.id;
 
@@ -317,6 +322,7 @@ function playerSelection() {
         }
       }
     });
+  }
 
     document.addEventListener('mouseout', (event) => {
       let elementId = event.target.id;
@@ -544,5 +550,11 @@ function solutionCheck() {
         score += 3600;
       }
     }
+  }
+}
+
+function mobileCheck() {
+  if(/Android|iPhone/i.test(navigator.userAgent)) {
+    mobile = true;
   }
 }
