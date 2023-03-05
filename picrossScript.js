@@ -119,9 +119,6 @@ function playerSelection() {
     let elementId = e.target.id;
 
     if (document.getElementById(elementId).className == "grid-item") {
-      document.addEventListener('touchmove', (event) => {
-        event.preventDefault();
-    });
         console.log(elementId);
     } else { 
         console.log("Non Grid Item.");
@@ -163,7 +160,54 @@ function playerSelection() {
       errorCheck();
     }
     winCondition();
-  console.log(document.getElementById("row1").innerHTML[0]);
+  });
+
+  document.addEventListener('ontouchstart', (event) => {
+    mouseIsDown = true;
+    let elementId = e.target.id;
+
+    if (document.getElementById(elementId).className == "grid-item") {
+        console.log(elementId);
+    } else { 
+        console.log("Non Grid Item.");
+    }
+
+    for(let i = 0; i < grid.length; i++) {
+      for(let a = 0; a < grid[i].length; a++) {
+        if(grid[i][a] == elementId) {
+          if(e.button == 0 && playerSelected[i][a] == false) {
+            leftMouse = true;
+            playerSelected[i][a] = true;
+            playerXMarkerSelected[i][a] = false;
+            document.getElementById(elementId).style.backgroundColor = "black";
+            document.getElementById(elementId).style.backgroundImage = "none";
+          } else if(playerSelected[i][a] == true && e.button == 0) {
+            leftMouse = true;
+            playerSelected[i][a] = false;
+            document.getElementById(elementId).style.backgroundColor = "white";
+            document.getElementById(elementId).style.backgroundImage = "none";
+          }
+          
+          if(e.button == 2 && playerXMarkerSelected[i][a] == false) {
+            rightMouse = true;
+            playerSelected[i][a] = false;
+            playerXMarkerSelected[i][a] = true;
+            document.getElementById(elementId).style.backgroundImage = "url(./Imgs/xMarker.png)";
+            document.getElementById(elementId).style.backgroundSize = "90px 90px";
+            document.getElementById(elementId).style.backgroundColor = "white";
+          } else if(playerXMarkerSelected[i][a] == true && e.button == 2) {
+            rightMouse = true;
+            playerXMarkerSelected[i][a] = false;
+            document.getElementById(elementId).style.backgroundColor = "white";
+            document.getElementById(elementId).style.backgroundImage = "none";
+          }
+        }
+      }
+    }
+    if(errorChecked == false) {
+      errorCheck();
+    }
+    winCondition();
   });
 
   document.addEventListener(`mouseup`, (event) => {
@@ -244,7 +288,9 @@ function playerSelection() {
       }
     });
 
-    
+    document.addEventListener('touchmove', (event) => {
+        event.preventDefault();
+    });
 }
 
 //Controller
