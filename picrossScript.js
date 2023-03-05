@@ -63,10 +63,14 @@ var gridRowAmount;
 var gridHintAmount;
 var hintAmountLetter = "abcdefghijklmnopqrstuvwxyz";
 
+<<<<<<< HEAD
 function gridStart() {
   mobileCheck();
+=======
+function gridStart(test) {
+>>>>>>> origin/Working-Branch
   timer();
-  userGridSize();
+  userGridSize(test);
   buildGrid();
   solutionBuild();
   solutionHints();
@@ -76,13 +80,15 @@ function gridStart() {
   getLeaderBoard(publicList[userInput - 2]);
 }
 
-function userGridSize() {
-  userInput = parseInt(document.getElementById("input").value);
+function userGridSize(input) {
+
+  userInput = input
   template = document.getElementById("container");
 
   userSubmitted = true;
   
    gridTotal = userInput * userInput;
+   console.log(userInput);
 }
 
 function solutionHints() {
