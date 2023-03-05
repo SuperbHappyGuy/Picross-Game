@@ -241,8 +241,12 @@ function playerSelection() {
       }
     });
 
-    $(document).on('touchMove', function(event) {
-      event.preventDefault();
+    document.addEventListener('touchmove', (event) => {
+      let elementId = event.target.id;
+
+      if (document.getElementById(elementId).className == "grid-item") {
+        event.preventDefault();
+      }
     });
 }
 
