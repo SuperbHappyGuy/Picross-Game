@@ -119,6 +119,9 @@ function playerSelection() {
     let elementId = e.target.id;
 
     if (document.getElementById(elementId).className == "grid-item") {
+      document.addEventListener('touchmove', (event) => {
+        event.preventDefault();
+    });
         console.log(elementId);
     } else { 
         console.log("Non Grid Item.");
@@ -241,13 +244,7 @@ function playerSelection() {
       }
     });
 
-    document.addEventListener('touchmove', (event) => {
-      let elementId = event.target.id;
-
-      if (document.getElementById(elementId).className == "grid-item") {
-        event.preventDefault();
-      }
-    });
+    
 }
 
 //Controller
