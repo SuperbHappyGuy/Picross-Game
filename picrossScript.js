@@ -240,6 +240,10 @@ function playerSelection() {
         }
       }
     });
+
+    $(document).on('touchMove', function(event) {
+      event.preventDefault();
+    });
 }
 
 //Controller
@@ -291,6 +295,7 @@ function buildGrid() {
     cellSize += cells + "% ";
   }
   document.getElementById("grid").style.gridTemplateColumns = cellSize;
+  //gridSpacers();
 }
 
 function solutionBuild() {
@@ -306,6 +311,15 @@ function solutionBuild() {
       } else {
         solution[i][a] = false;
       }
+    }
+  }
+}
+//Work in Progress
+function gridSpacers() {
+  if(userInput > 5) {
+    for(let i = 0; i < userInput + 0; i++) {
+      document.getElementById("gridItem" + ((userInput / 2) + (i * userInput))).style.borderRight = "5px solid rgba(0, 0, 255, 1)";
+      document.getElementById("gridItem" + ((userInput / 2) + (i * userInput) + 1)).style.borderLeft = "5px solid rgba(0, 0, 255, 1)";
     }
   }
 }
