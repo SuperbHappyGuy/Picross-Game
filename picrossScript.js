@@ -17,6 +17,8 @@ var grid = [];
 var fullGrid = [];
 var gridIDs = [];
 var allTrue = [];
+var colHintsArray = [];
+var rowHintsArray = [];
 
 var userSubmitted = false;
 var win = false;
@@ -62,9 +64,9 @@ var gridRowAmount;
 var gridHintAmount;
 var hintAmountLetter = "abcdefghijklmnopqrstuvwxyz";
 
-function gridStart(test) {
+function gridStart(size) {
   timer();
-  userGridSize(test);
+  userGridSize(size);
   buildGrid();
   solutionBuild();
   solutionHints();
@@ -89,28 +91,33 @@ function solutionHints() {
   rowHints();
 
   for(let i = 1; i < userInput + 1; i++) {
+    colHintsArray[i - 1] = [];
     for(let a = 0; a < userInput; a++) {
       if(solution[a][i - 1] == true) {
         hintInt++;
       } else if(solution[a][i - 1] == false || a == userInput - 1) {
         if(hintInt != 0) {
          hintString += hintInt;
+         colHintsArray[i - 1].push(hintInt);
         } 
         hintInt = 0;
       }
     }
       if(hintInt != 0) {
         hintString += hintInt;
+        colHintsArray[i - 1].push(hintInt);
       } 
      hintInt = 0;
 
      if(hintString == "") {
       hintString = "0";
+      colHintsArray[i - 1].push(0);
      }
 
     document.getElementById("column" + i).innerHTML = hintString;
     hintString = "";
   }
+  console.log(colHintsArray);
 }
 
 function playerSelection() {
@@ -255,21 +262,21 @@ function playerSelection() {
 //Controller
 function hintSquareAmount() {
   for(let i = 1; i < userInput + 1; i++) {
-    for(let a = 0; a < document.getElementById("column" + i).innerHTML.length - 1; a++) {
-      gridHintAmount = gridColumn + i + hintAmountLetter[a] + closeGridColumnInside + document.getElementById("column" + i).innerHTML[a + 1] + closeDiv;
+    for(let a = 0; a < colHintsArray[i - 1].length - 1; a++) {
+      gridHintAmount = gridColumn + i + hintAmountLetter[a] + closeGridColumnInside + colHintsArray[i - 1][a + 1] + closeDiv;
       document.getElementById("columnHint" + i).innerHTML += gridHintAmount;
-      document.getElementById("column" + i).style.top = -200 + ((document.getElementById("column" + i).innerHTML.length - 2) * -93) + "px";
-      document.getElementById("column" + i + hintAmountLetter[a]).style.top = -200 + (((document.getElementById("column" + i).innerHTML.length - 3) - a) * -93) + "px";
+      document.getElementById("column" + i).style.top = -200 + ((colHintsArray[i - 1].length - 2) * -93) + "px";
+      document.getElementById("column" + i + hintAmountLetter[a]).style.top = -200 + (((colHintsArray[i - 1].length - 3) - a) * -93) + "px";
     }
-    document.getElementById("column" + i).innerHTML = document.getElementById("column" + i).innerHTML[0];
+    document.getElementById("column" + i).innerHTML = colHintsArray[i - 1][0];
 
-    for(let a = 0; a < document.getElementById("row" + i).innerHTML.length - 1; a++) {
-      gridHintAmount = gridRow + i + hintAmountLetter[a] + closeGridRowInside + document.getElementById("row" + i).innerHTML[a + 1] + closeDiv;
+    for(let a = 0; a < rowHintsArray[i - 1].length - 1; a++) {
+      gridHintAmount = gridRow + i + hintAmountLetter[a] + closeGridRowInside + rowHintsArray[i - 1][a + 1] + closeDiv;
       document.getElementById("rowHint" + i).innerHTML += gridHintAmount;
-      document.getElementById("row" + i).style.left = -142 + ((document.getElementById("row" + i).innerHTML.length - 2) * -93) + "px";
-      document.getElementById("row" + i + hintAmountLetter[a]).style.left = -142 + (((document.getElementById("row" + i).innerHTML.length - 3) - a) * -93) + "px";
+      document.getElementById("row" + i).style.left = -142 + ((rowHintsArray[i - 1].length - 2) * -93) + "px";
+      document.getElementById("row" + i + hintAmountLetter[a]).style.left = -142 + (((rowHintsArray[i - 1].length - 3) - a) * -93) + "px";
     }
-    document.getElementById("row" + i).innerHTML = document.getElementById("row" + i).innerHTML[0];
+    document.getElementById("row" + i).innerHTML = rowHintsArray[i - 1][0];
   }
 }
 
@@ -312,7 +319,7 @@ function solutionBuild() {
       let rand = Math.floor(Math.random() * 100) + 1;
       let percent = Math.floor(Math.random() * 100) + 1;
 
-      if(rand >= 45) {
+      if(rand >= 44) {
         solution[i][a] = true;
       } else {
         solution[i][a] = false;
@@ -371,28 +378,33 @@ function winCondition() {
 
 function rowHints() {
   for(let i = 1; i < userInput + 1; i++) {
+    rowHintsArray[i - 1] = [];
     for(let a = 0; a < userInput; a++) {
       if(solution[i - 1][a] == true) {
         hintInt++;
       } else if(solution[i - 1][a] == false || a == userInput - 1) {
         if(hintInt != 0) {
          hintString += hintInt;
+         rowHintsArray[i - 1].push(hintInt);
         } 
         hintInt = 0;
       }
     }
     if(hintInt != 0) {
       hintString += hintInt;
+      rowHintsArray[i - 1].push(hintInt);
      } 
      hintInt = 0;
 
      if(hintString == "") {
       hintString = "0";
+      rowHintsArray[i - 1].push(0);
      }
 
     document.getElementById("row" + i).innerHTML = hintString;
     hintString = "";
   }
+  console.log(rowHintsArray);
 }
 
 function timer() {
