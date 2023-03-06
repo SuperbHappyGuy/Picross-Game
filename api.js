@@ -1,4 +1,5 @@
 var nameFound = false;
+var scoreText = false;
 
 var playerID;
 var playerScore;
@@ -94,9 +95,15 @@ async function getLeaderBoard(public) {
     .then(data => {
         let x = "";
         for(let i = 0; i < data.players.length; i++) {
-            x += `Scores: ` + data.players[i].name + ": " + data.players[i].score + "s" + "<br>";
+            if(scoreText == false) {
+                scoreText = true;
+                x += "<li>--Scores: " + userInput + "x" + userInput + "--</li>" + (i + 1) + ": " + data.players[i].name + ": " + data.players[i].score + "s" + "<br>";
+
+            } else {
+                x += (i + 1) + ": " + data.players[i].name + ": " + data.players[i].score + "s" + "<br>";
+            }
         }
-        document.getElementById("leaderBoard").innerHTML = x;
+        document.getElementById("leaderBoard").innerHTML = "<li>" + x + "</li>";
     })
     .catch(error => console.error(error));
 }
