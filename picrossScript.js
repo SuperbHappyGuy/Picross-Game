@@ -1,11 +1,11 @@
 //Model
-var userInput;
-var template;
-var gridTotal;
-var cellSize;
-var cells;
+var userInput = 0;
+var template = "";
+var gridTotal = 0;
+var cellSize = 0;
+var cells = 0;
 
-var cellIncrement;
+var cellIncrement = 0;
 
 var hintInt = 0;
 var hintString = "";
@@ -27,12 +27,16 @@ var mouseIsDown = false;
 var leftMouse = false;
 var rightMouse = false;
 var mobile = false;
+var start = false;
 
-var timers;
+var timers = 0;
 var score = 0;
 var sec = 0;
 var min = 0;
 var hour = 0;
+
+var gridHintAmount = "";
+var hintAmountLetter = "abcdefghijklmnopqrstuvwxyz";
 
 //View
 let closeDiv = `</div>`
@@ -61,11 +65,10 @@ let closeGridRowInside = ` class= "popoverSide">`
 
 let closeHint = '">'
 
-var gridRowAmount;
-var gridHintAmount;
-var hintAmountLetter = "abcdefghijklmnopqrstuvwxyz";
-
 function gridStart(size) {
+  if(start == true) {
+    clearGrid();
+  }
   timer();
   userGridSize(size);
   buildGrid();
@@ -75,6 +78,8 @@ function gridStart(size) {
   playerSelectionArray();
   playerSelection();
   getLeaderBoard(publicList[userInput - 2]);
+  start = true;
+  size = 0;
 }
 
 function userGridSize(input) {
@@ -292,8 +297,8 @@ function playerSelection() {
           for(let a = 0; a < grid[i].length; a++) {
             if(grid[i][a] == elementId) {
               for(let x = 0; x < userInput; x++) {
-                document.getElementById(grid[i][(a % 1) + x]).style.boxShadow = "inset 0 0 0 1000px rgba(0,0,255,0.12)";
-                document.getElementById(grid[(i % 1) + x][a]).style.boxShadow = "inset 0 0 0 1000px rgba(0,0,255,0.12)";
+                document.getElementById(grid[i][(a % 1) + x]).style.boxShadow = "inset 0 0 0 1000px rgba(0,0,255,0.17)";
+                document.getElementById(grid[(i % 1) + x][a]).style.boxShadow = "inset 0 0 0 1000px rgba(0,0,255,0.17)";
               }
             }
           }
@@ -414,7 +419,7 @@ function solutionBuild() {
       let rand = Math.floor(Math.random() * 100) + 1;
       let percent = Math.floor(Math.random() * 100) + 1;
 
-      if(rand >= 44) {
+      if(rand >= 38) {
         solution[i][a] = true;
       } else {
         solution[i][a] = false;
@@ -570,4 +575,42 @@ function mobileCheck() {
   if(/Android|iPhone/i.test(navigator.userAgent)) {
     mobile = true;
   }
+}
+
+function clearGrid() {
+  userInput = 0;
+  template = "";
+  gridTotal = 0;
+  cellSize = 0;
+  cells = 0;
+  cellIncrement = 0;
+  hintInt = 0;
+  hintString = "";
+  solution = [];
+  playerSelected = [];
+  playerXMarkerSelected = [];
+  grid = [];
+  fullGrid = [];
+  gridIDs = [];
+  allTrue = [];
+  colHintsArray = [];
+  rowHintsArray = [];
+  userSubmitted = false;
+  win = false;
+  errorChecked = false;
+  mouseIsDown = false;
+  leftMouse = false;
+  rightMouse = false;
+  mobile = false;
+  start = false;
+  timers = 0;
+  score = 0;
+  sec = 0;
+  min = 0;
+  hour = 0;
+  gridHintAmount = 0;
+
+  document.getElementById("grid").innerHTML = "";
+  document.getElementById("container").innerHTML = "";
+  document.getElementById('time').innerHTML = "";
 }
