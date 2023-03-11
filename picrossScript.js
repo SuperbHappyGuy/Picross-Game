@@ -408,7 +408,8 @@ function buildGrid() {
     cellSize += cells + "% ";
   }
   document.getElementById("grid").style.gridTemplateColumns = cellSize;
-  //gridSpacers();
+
+    gridSpacers();
 }
 
 function solutionBuild() {
@@ -429,10 +430,13 @@ function solutionBuild() {
 }
 //Work in Progress
 function gridSpacers() {
-  if(userInput > 5) {
+  if(userInput % 2 === 0) {
     for(let i = 0; i < userInput + 0; i++) {
-      document.getElementById("gridItem" + ((userInput / 2) + (i * userInput))).style.borderRight = "5px solid rgba(0, 0, 255, 1)";
-      document.getElementById("gridItem" + ((userInput / 2) + (i * userInput) + 1)).style.borderLeft = "5px solid rgba(0, 0, 255, 1)";
+      document.getElementById("gridItem" + ((userInput / 2) + (i * userInput))).style.borderRight = "4px solid #aa3d01";
+      document.getElementById("gridItem" + ((userInput / 2) + (i * userInput) + 1)).style.borderLeft = "4px solid #aa3d01";
+
+      document.getElementById("gridItem" + (((userInput * userInput) / 2) - i)).style.borderBottom = "3px solid #aa3d01";
+      document.getElementById("gridItem" + (((userInput * userInput) / 2) + i + 1)).style.borderTop = "3px solid #aa3d01";
     }
   }
 }
