@@ -6,6 +6,8 @@ var cellSize = 0;
 var cells = 0;
 
 var cellIncrement = 0;
+var columnHintLength = 0;
+var rowHintLength = 0;
 
 var hintInt = 0;
 var hintString = "";
@@ -91,6 +93,12 @@ function userGridSize(input) {
   
    gridTotal = userInput * userInput;
    console.log(userInput);
+
+   for(let i = 2; i < 20; i++) {
+    if(userInput == i) {
+      //document.getElementById("grid").style.transform = "scale(0.5,0.5)";
+    }
+   }
 }
 
 function solutionHints() {
@@ -124,6 +132,23 @@ function solutionHints() {
     hintString = "";
   }
   console.log(colHintsArray);
+
+  for(let i = 0; i < userInput; i++) {
+    columnHintLength = 0;
+    rowHintLength = 0;
+
+    if(colHintsArray[i].length >= columnHintLength) {
+      columnHintLength = colHintsArray[i].length;
+    }
+
+    if(rowHintsArray[i].length >= rowHintLength) {
+      rowHintLength = rowHintsArray[i].length;
+    }
+  }
+
+  document.getElementById("grid").style.paddingTop = ((columnHintLength * 100) + 100) + "px"
+  document.getElementById("grid").style.paddingLeft = ((rowHintLength * 100 + 100)) + "px"
+
 }
 
 function playerSelection() {
