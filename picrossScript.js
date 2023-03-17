@@ -77,6 +77,7 @@ function gridStart(size) {
   solutionBuild();
   solutionHints();
   hintSquareAmount();
+  scale();
   playerSelectionArray();
   playerSelection();
   getLeaderBoard(publicList[userInput - 2]);
@@ -94,11 +95,7 @@ function userGridSize(input) {
    gridTotal = userInput * userInput;
    console.log(userInput);
 
-   for(let i = 2; i < 20; i++) {
-    if(userInput == i) {
-      //document.getElementById("grid").style.transform = "scale(0.5,0.5)";
-    }
-   }
+   
 }
 
 function solutionHints() {
@@ -642,4 +639,12 @@ function clearGrid() {
   document.getElementById("grid").innerHTML = "";
   document.getElementById("container").innerHTML = "";
   document.getElementById('time').innerHTML = "";
+}
+
+function scale() {
+  for(let i = 2; i < 20; i++) {
+    if(userInput == i) {
+      document.getElementById("grid").style.transform = "scale(0.5, 0.5)";
+    }
+   }
 }
