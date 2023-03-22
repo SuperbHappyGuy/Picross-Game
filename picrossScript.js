@@ -749,19 +749,19 @@ function scale() {
         document.getElementById("grid").style.zoom = 0.09;
       }
       if(userInput == 16) {
-        document.getElementById("grid").style.zoom = 0.08;
+        document.getElementById("grid").style.zoom = 0.10;
       }
       if(userInput == 17) {
-        document.getElementById("grid").style.zoom = 0.07;
+        document.getElementById("grid").style.zoom = 0.09;
       }
       if(userInput == 18) {
-        document.getElementById("grid").style.zoom = 0.06;
+        document.getElementById("grid").style.zoom = 0.08;
       }
       if(userInput == 19) {
-        document.getElementById("grid").style.zoom = 0.05;
+        document.getElementById("grid").style.zoom = 0.07;
       }
       if(userInput == 20) {
-        document.getElementById("grid").style.zoom = 0.04;
+        document.getElementById("grid").style.zoom = 0.06;
       }
      }
   }
