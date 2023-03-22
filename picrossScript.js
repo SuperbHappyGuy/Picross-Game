@@ -494,7 +494,11 @@ function winCondition() {
     document.getElementById("win").innerHTML = `<h1>You Win!</h1>
                                                 Name: <input id= "scoreName" type="text" name="score">
                                                 <input id="btn" type="button" onclick="postScore()" value="Submit">
+                                                <nav id="table">
+                                                  <ul id="leaderBoard"></ul>
+                                                </nav>
                                                `;
+    document.getElementById("grid").style.display = "none";
     win = true;
   }
 }
