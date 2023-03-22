@@ -282,7 +282,7 @@ function playerSelection() {
 
 if (mobile == true) {
   document.addEventListener('ontouched', (event) => {
-    let elementId = e.target.id;
+    let elementId = event.target.id;
 
     if (document.getElementById(elementId).className == "grid-item") {
         console.log(elementId);
@@ -601,8 +601,8 @@ function solutionCheck() {
 function mobileCheck() {
   if(document.getElementById("main").clientWidth < 800) {
     mobile = true;
-    console.log(mobile);
   }
+  console.log("Mobile = " + mobile);
 }
 
 function clearGrid() {
