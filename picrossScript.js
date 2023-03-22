@@ -704,7 +704,7 @@ function scale() {
     }
    }
 
-   if(mobile == true) {
+   if(document.getElementById("main").clientWidth < 800) {
     document.getElementById("grid").style.marginTop = "55%";
     document.getElementById("grid").style.marginLeft = "0%";
 
