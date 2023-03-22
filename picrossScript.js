@@ -719,19 +719,19 @@ function scale() {
         document.getElementById("grid").style.zoom = 0.25;
       }
       if(userInput == 6) {
-        document.getElementById("grid").style.zoom = 0.13;
+        document.getElementById("grid").style.zoom = 0.23;
       }
       if(userInput == 7) {
-        document.getElementById("grid").style.zoom = 0.15;
+        document.getElementById("grid").style.zoom = 0.21;
       }
       if(userInput == 8) {
-        document.getElementById("grid").style.zoom = 0.10;
+        document.getElementById("grid").style.zoom = 0.19;
       }
       if(userInput == 9) {
-        document.getElementById("grid").style.zoom = 0.10;
+        document.getElementById("grid").style.zoom = 0.17;
       }
       if(userInput == 10) {
-        document.getElementById("grid").style.zoom = 0.09;
+        document.getElementById("grid").style.zoom = 0.15;
       }
       if(userInput == 11) {
         document.getElementById("grid").style.zoom = 0.19;
