@@ -68,6 +68,7 @@ let closeGridRowInside = ` class= "popoverSide">`
 let closeHint = '">'
 
 function gridStart(size) {
+  mobileCheck();
   if(start == true) {
     clearGrid();
   }
@@ -645,64 +646,126 @@ function scale() {
   for(let i = 2; i <= 20; i++) {
     document.getElementById("grid").style.transform = "scale(1.5)";
     if(userInput == 2) {
-      document.getElementById("grid").style.zoom = 0.79;
+      document.getElementById("grid").style.zoom = 0.83;
     }
     if(userInput == 3) {
-      document.getElementById("grid").style.zoom = 0.64;
+      document.getElementById("grid").style.zoom = 0.68;
     }
     if(userInput == 4) {
-      document.getElementById("grid").style.zoom = 0.48;
+      document.getElementById("grid").style.zoom = 0.53;
     }
     if(userInput == 5) {
-      document.getElementById("grid").style.zoom = 0.44;
+      document.getElementById("grid").style.zoom = 0.48;
     }
     if(userInput == 6) {
-      document.getElementById("grid").style.zoom = 0.39;
+      document.getElementById("grid").style.zoom = 0.43;
     }
     if(userInput == 7) {
-      document.getElementById("grid").style.zoom = 0.34;
+      document.getElementById("grid").style.zoom = 0.38;
     }
     if(userInput == 8) {
-      document.getElementById("grid").style.zoom = 0.29;
+      document.getElementById("grid").style.zoom = 0.33;
     }
     if(userInput == 9) {
-      document.getElementById("grid").style.zoom = 0.29;
+      document.getElementById("grid").style.zoom = 0.33;
     }
     if(userInput == 10) {
-      document.getElementById("grid").style.zoom = 0.27;
+      document.getElementById("grid").style.zoom = 0.31;
     }
     if(userInput == 11) {
-      document.getElementById("grid").style.zoom = 0.25;
+      document.getElementById("grid").style.zoom = 0.29;
     }
     if(userInput == 12) {
-      document.getElementById("grid").style.zoom = 0.23;
+      document.getElementById("grid").style.zoom = 0.27;
     }
     if(userInput == 13) {
-      document.getElementById("grid").style.zoom = 0.21;
+      document.getElementById("grid").style.zoom = 0.25;
     }
     if(userInput == 14) {
-      document.getElementById("grid").style.zoom = 0.19;
+      document.getElementById("grid").style.zoom = 0.23;
     }
     if(userInput == 15) {
-      document.getElementById("grid").style.zoom = 0.18;
+      document.getElementById("grid").style.zoom = 0.22;
     }
     if(userInput == 16) {
-      document.getElementById("grid").style.zoom = 0.16;
+      document.getElementById("grid").style.zoom = 0.20;
     }
     if(userInput == 17) {
-      document.getElementById("grid").style.zoom = 0.15;
+      document.getElementById("grid").style.zoom = 0.19;
     }
     if(userInput == 18) {
-      document.getElementById("grid").style.zoom = 0.13;
+      document.getElementById("grid").style.zoom = 0.17;
     }
     if(userInput == 19) {
-      document.getElementById("grid").style.zoom = 0.13;
+      document.getElementById("grid").style.zoom = 0.17;
     }
     if(userInput == 20) {
-      document.getElementById("grid").style.zoom = 0.12;
+      document.getElementById("grid").style.zoom = 0.16;
     }
    }
-   if(document.getElementById("main").clientWidth < 800) {
-    document.getElementById("grid").style.marginTop = "50%";
+
+   if(mobile == true) {
+    document.getElementById("grid").style.marginTop = "55%";
+
+    for(let i = 2; i <= 20; i++) {
+      document.getElementById("grid").style.transform = "scale(1.5)";
+      if(userInput == 2) {
+        document.getElementById("grid").style.zoom = 0.73;
+      }
+      if(userInput == 3) {
+        document.getElementById("grid").style.zoom = 0.58;
+      }
+      if(userInput == 4) {
+        document.getElementById("grid").style.zoom = 0.43;
+      }
+      if(userInput == 5) {
+        document.getElementById("grid").style.zoom = 0.38;
+      }
+      if(userInput == 6) {
+        document.getElementById("grid").style.zoom = 0.33;
+      }
+      if(userInput == 7) {
+        document.getElementById("grid").style.zoom = 0.28;
+      }
+      if(userInput == 8) {
+        document.getElementById("grid").style.zoom = 0.23;
+      }
+      if(userInput == 9) {
+        document.getElementById("grid").style.zoom = 0.23;
+      }
+      if(userInput == 10) {
+        document.getElementById("grid").style.zoom = 0.21;
+      }
+      if(userInput == 11) {
+        document.getElementById("grid").style.zoom = 0.19;
+      }
+      if(userInput == 12) {
+        document.getElementById("grid").style.zoom = 0.17;
+      }
+      if(userInput == 13) {
+        document.getElementById("grid").style.zoom = 0.15;
+      }
+      if(userInput == 14) {
+        document.getElementById("grid").style.zoom = 0.13;
+      }
+      if(userInput == 15) {
+        document.getElementById("grid").style.zoom = 0.12;
+      }
+      if(userInput == 16) {
+        document.getElementById("grid").style.zoom = 0.10;
+      }
+      if(userInput == 17) {
+        document.getElementById("grid").style.zoom = 0.09;
+      }
+      if(userInput == 18) {
+        document.getElementById("grid").style.zoom = 0.07;
+      }
+      if(userInput == 19) {
+        document.getElementById("grid").style.zoom = 0.07;
+      }
+      if(userInput == 20) {
+        document.getElementById("grid").style.zoom = 0.06;
+      }
+     }
   }
 }
