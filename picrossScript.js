@@ -702,7 +702,7 @@ function scale() {
       document.getElementById("grid").style.zoom = 0.12;
     }
    }
-   if(mobile == true) {
+   if(document.getElementById("main").clientWidth < 800) {
     document.getElementById("grid").style.marginTop = "50%";
   }
 }
