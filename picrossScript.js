@@ -706,12 +706,12 @@ function scale() {
 
    if(document.getElementById("main").clientWidth < 800) {
     document.getElementById("grid").style.marginTop = "55%";
-    document.getElementById("grid").style.marginLeft = "25%";
+    document.getElementById("grid").style.marginLeft = "30%";
 
     for(let i = 2; i <= 20; i++) {
       document.getElementById("grid").style.transform = "scale(1.5)";
       if(userInput == 2) {
-        document.getElementById("grid").style.zoom = 0.73;
+        document.getElementById("grid").style.zoom = 0.60;
       }
       if(userInput == 3) {
         document.getElementById("grid").style.zoom = 0.58;
