@@ -758,10 +758,10 @@ function scale() {
         document.getElementById("grid").style.zoom = 0.09;
       }
       if(userInput == 19) {
-        document.getElementById("grid").style.zoom = 0.09;
+        document.getElementById("grid").style.zoom = 0.08;
       }
       if(userInput == 20) {
-        document.getElementById("grid").style.zoom = 0.08;
+        document.getElementById("grid").style.zoom = 0.07;
       }
      }
   }
