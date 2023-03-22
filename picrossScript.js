@@ -151,6 +151,7 @@ function solutionHints() {
 function playerSelection() {
   initializeGrid();
 
+  if(mobile == false) {
   document.addEventListener('mousedown', (e) => {
     mouseIsDown = true;
     let elementId = e.target.id;
@@ -199,8 +200,88 @@ function playerSelection() {
     winCondition();
   });
 
+  document.addEventListener('mouseover', (event) => {
+    let elementId = event.target.id;
+
+    if (document.getElementById(elementId).className == "grid-item") {
+      for(let i = 0; i < grid.length; i++) {
+        for(let a = 0; a < grid[i].length; a++) {
+          if(grid[i][a] == elementId) {
+            for(let x = 0; x < userInput; x++) {
+              document.getElementById(grid[i][(a % 1) + x]).style.boxShadow = "inset 0 0 0 1000px rgba(170,61,1,0.21)";
+              document.getElementById(grid[(i % 1) + x][a]).style.boxShadow = "inset 0 0 0 1000px rgba(170,61,1,0.21)";
+            }
+          }
+        }
+      }
+    }
+
+    if(mouseIsDown == true) {
+      for(let i = 0; i < grid.length; i++) {
+        for(let a = 0; a < grid[i].length; a++) {
+          if(grid[i][a] == elementId) {
+            if(leftMouse == true && playerSelected[i][a] == false) {
+              playerSelected[i][a] = true;
+              playerXMarkerSelected[i][a] = false;
+              document.getElementById(elementId).style.backgroundColor = "#171820";
+            } else if(playerSelected[i][a] == true && leftMouse == true) {
+              playerSelected[i][a] = false;
+              document.getElementById(elementId).style.backgroundColor = "white";
+              document.getElementById(elementId).style.backgroundImage = "none";
+            }
+            
+            if(rightMouse == true && playerXMarkerSelected[i][a] == false) {
+              playerSelected[i][a] = false;
+              playerXMarkerSelected[i][a] = true;
+              document.getElementById(elementId).style.backgroundImage = "url(./Imgs/xMarker.png)";
+              document.getElementById(elementId).style.backgroundSize = "90px 90px";
+              document.getElementById(elementId).style.backgroundColor = "white";
+            } else if(playerXMarkerSelected[i][a] == true && rightMouse == true) {
+              playerXMarkerSelected[i][a] = false;
+              document.getElementById(elementId).style.backgroundColor = "white";
+              document.getElementById(elementId).style.backgroundImage = "none";
+            }
+          }
+        }
+      }
+    }
+  });
+
+  document.addEventListener('mouseout', (event) => {
+    let elementId = event.target.id;
+
+    if (document.getElementById(elementId).className == "grid-item") {
+      for(let i = 0; i < grid.length; i++) {
+        for(let a = 0; a < grid[i].length; a++) {
+          if(grid[i][a] == elementId) {
+            for(let x = 0; x < (userInput); x++) {
+              document.getElementById(grid[i][(a % 1) + x]).style.boxShadow = "inset 0 0 0 1000px rgba(0,0,0,0.0)";
+              document.getElementById(grid[(i % 1) + x][a]).style.boxShadow = "inset 0 0 0 1000px rgba(0,0,0,0)";
+            }
+          }
+        }
+      }
+    }
+  });
+
+  document.addEventListener(`mouseup`, (event) => {
+    mouseIsDown = false;
+    leftMouse = false;
+    rightMouse = false;
+  });
+
+  document.addEventListener('contextmenu', (event) => {
+    let elementId = event.target.id;
+
+    if (document.getElementById(elementId).className == "grid-item") {
+    event.preventDefault();
+    } 
+  });
+
+}
+
+if (mobile == true) {
   document.addEventListener('ontouchstart', (event) => {
-    mouseIsDown = true;
     let elementId = e.target.id;
 
     if (document.getElementById(elementId).className == "grid-item") {
@@ -294,87 +375,10 @@ function playerSelection() {
       }
   });
 
-  document.addEventListener(`mouseup`, (event) => {
-    mouseIsDown = false;
-    leftMouse = false;
-    rightMouse = false;
-  })
-
-  document.addEventListener('contextmenu', (event) => {
-      let elementId = event.target.id;
-
-      if (document.getElementById(elementId).className == "grid-item") {
-      event.preventDefault();
-      } 
-    });
-
-    document.addEventListener('mouseover', (event) => {
-      let elementId = event.target.id;
-
-      if (document.getElementById(elementId).className == "grid-item") {
-        for(let i = 0; i < grid.length; i++) {
-          for(let a = 0; a < grid[i].length; a++) {
-            if(grid[i][a] == elementId) {
-              for(let x = 0; x < userInput; x++) {
-                document.getElementById(grid[i][(a % 1) + x]).style.boxShadow = "inset 0 0 0 1000px rgba(170,61,1,0.21)";
-                document.getElementById(grid[(i % 1) + x][a]).style.boxShadow = "inset 0 0 0 1000px rgba(170,61,1,0.21)";
-              }
-            }
-          }
-        }
-      }
-
-      if(mouseIsDown == true) {
-        for(let i = 0; i < grid.length; i++) {
-          for(let a = 0; a < grid[i].length; a++) {
-            if(grid[i][a] == elementId) {
-              if(leftMouse == true && playerSelected[i][a] == false) {
-                playerSelected[i][a] = true;
-                playerXMarkerSelected[i][a] = false;
-                document.getElementById(elementId).style.backgroundColor = "#171820";
-              } else if(playerSelected[i][a] == true && leftMouse == true) {
-                playerSelected[i][a] = false;
-                document.getElementById(elementId).style.backgroundColor = "white";
-                document.getElementById(elementId).style.backgroundImage = "none";
-              }
-              
-              if(rightMouse == true && playerXMarkerSelected[i][a] == false) {
-                playerSelected[i][a] = false;
-                playerXMarkerSelected[i][a] = true;
-                document.getElementById(elementId).style.backgroundImage = "url(./Imgs/xMarker.png)";
-                document.getElementById(elementId).style.backgroundSize = "90px 90px";
-                document.getElementById(elementId).style.backgroundColor = "white";
-              } else if(playerXMarkerSelected[i][a] == true && rightMouse == true) {
-                playerXMarkerSelected[i][a] = false;
-                document.getElementById(elementId).style.backgroundColor = "white";
-                document.getElementById(elementId).style.backgroundImage = "none";
-              }
-            }
-          }
-        }
-      }
-    });
-
-    document.addEventListener('mouseout', (event) => {
-      let elementId = event.target.id;
-
-      if (document.getElementById(elementId).className == "grid-item") {
-        for(let i = 0; i < grid.length; i++) {
-          for(let a = 0; a < grid[i].length; a++) {
-            if(grid[i][a] == elementId) {
-              for(let x = 0; x < (userInput); x++) {
-                document.getElementById(grid[i][(a % 1) + x]).style.boxShadow = "inset 0 0 0 1000px rgba(0,0,0,0.0)";
-                document.getElementById(grid[(i % 1) + x][a]).style.boxShadow = "inset 0 0 0 1000px rgba(0,0,0,0)";
-              }
-            }
-          }
-        }
-      }
-    });
-
-    document.addEventListener('touchmove', (event) => {
-        event.preventDefault();
-    });
+  document.addEventListener('touchmove', (event) => {
+    event.preventDefault();
+  });
+}
 }
 
 //Controller
