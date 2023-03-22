@@ -710,10 +710,10 @@ function scale() {
         document.getElementById("grid").style.zoom = 0.40;
       }
       if(userInput == 3) {
-        document.getElementById("grid").style.zoom = 0.38;
+        document.getElementById("grid").style.zoom = 0.36;
       }
       if(userInput == 4) {
-        document.getElementById("grid").style.zoom = 0.23;
+        document.getElementById("grid").style.zoom = 0.25;
       }
       if(userInput == 5) {
         document.getElementById("grid").style.zoom = 0.18;
