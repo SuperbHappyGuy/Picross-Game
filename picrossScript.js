@@ -716,10 +716,10 @@ function scale() {
         document.getElementById("grid").style.zoom = 0.27;
       }
       if(userInput == 5) {
-        document.getElementById("grid").style.zoom = 0.25;
+        document.getElementById("grid").style.zoom = 0.23;
       }
       if(userInput == 6) {
-        document.getElementById("grid").style.zoom = 0.23;
+        document.getElementById("grid").style.zoom = 0.22;
       }
       if(userInput == 7) {
         document.getElementById("grid").style.zoom = 0.19;
@@ -728,10 +728,10 @@ function scale() {
         document.getElementById("grid").style.zoom = 0.17;
       }
       if(userInput == 9) {
-        document.getElementById("grid").style.zoom = 0.15;
+        document.getElementById("grid").style.zoom = 0.14;
       }
       if(userInput == 10) {
-        document.getElementById("grid").style.zoom = 0.13;
+        document.getElementById("grid").style.zoom = 0.12;
       }
       if(userInput == 11) {
         document.getElementById("grid").style.zoom = 0.19;
