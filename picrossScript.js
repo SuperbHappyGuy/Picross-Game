@@ -642,9 +642,6 @@ function clearGrid() {
 }
 
 function scale() {
-  if(mobile == true) {
-    document.getElementById("grid").style.marginTop = "20%";
-  }
   for(let i = 2; i <= 20; i++) {
     document.getElementById("grid").style.transform = "scale(1.5)";
     if(userInput == 2) {
@@ -705,4 +702,7 @@ function scale() {
       document.getElementById("grid").style.zoom = 0.12;
     }
    }
+   if(mobile == true) {
+    document.getElementById("grid").style.marginTop = "50%";
+  }
 }
