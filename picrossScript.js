@@ -706,7 +706,6 @@ function scale() {
 
    if(document.getElementById("main").clientWidth < 800) {
     document.getElementById("grid").style.marginTop = "55%";
-    document.getElementById("grid").style.marginLeft = "0%";
 
     for(let i = 2; i <= 20; i++) {
       document.getElementById("grid").style.transform = "scale(1.5)";
