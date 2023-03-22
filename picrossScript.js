@@ -707,31 +707,31 @@ function scale() {
     for(let i = 2; i <= 20; i++) {
       document.getElementById("grid").style.transform = "scale(1.5)";
       if(userInput == 2) {
-        document.getElementById("grid").style.zoom = 0.45;
+        document.getElementById("grid").style.zoom = 0.40;
       }
       if(userInput == 3) {
-        document.getElementById("grid").style.zoom = 0.58;
-      }
-      if(userInput == 4) {
-        document.getElementById("grid").style.zoom = 0.43;
-      }
-      if(userInput == 5) {
         document.getElementById("grid").style.zoom = 0.38;
       }
+      if(userInput == 4) {
+        document.getElementById("grid").style.zoom = 0.23;
+      }
+      if(userInput == 5) {
+        document.getElementById("grid").style.zoom = 0.18;
+      }
       if(userInput == 6) {
-        document.getElementById("grid").style.zoom = 0.33;
+        document.getElementById("grid").style.zoom = 0.13;
       }
       if(userInput == 7) {
-        document.getElementById("grid").style.zoom = 0.28;
+        document.getElementById("grid").style.zoom = 0.15;
       }
       if(userInput == 8) {
-        document.getElementById("grid").style.zoom = 0.23;
+        document.getElementById("grid").style.zoom = 0.10;
       }
       if(userInput == 9) {
-        document.getElementById("grid").style.zoom = 0.23;
+        document.getElementById("grid").style.zoom = 0.10;
       }
       if(userInput == 10) {
-        document.getElementById("grid").style.zoom = 0.21;
+        document.getElementById("grid").style.zoom = 0.09;
       }
       if(userInput == 11) {
         document.getElementById("grid").style.zoom = 0.19;
