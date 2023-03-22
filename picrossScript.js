@@ -283,6 +283,7 @@ function playerSelection() {
 if (mobile == true) {
   document.addEventListener('ontouchstart', (event) => {
     let elementId = event.target.id;
+    console.log(event.touches);
 
     if (document.getElementById(elementId).className == "grid-item") {
         console.log(elementId);
