@@ -601,6 +601,7 @@ function solutionCheck() {
 function mobileCheck() {
   if(document.getElementById("main").clientWidth < 800) {
     mobile = true;
+    console.log(mobile);
   }
 }
 
