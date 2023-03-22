@@ -81,7 +81,6 @@ function gridStart(size) {
   scale();
   playerSelectionArray();
   playerSelection();
-  getLeaderBoard(publicList[userInput - 2]);
   start = true;
   size = 0;
 }
@@ -491,6 +490,7 @@ function initializeGrid() {
 function winCondition() {
   if(JSON.stringify(playerSelected) === JSON.stringify(solution) && win == false) {
     console.log("You Win!");
+    getLeaderBoard(publicList[userInput - 2]);
     document.getElementById("win").innerHTML = `<h1>You Win!</h1>
                                                 Name: <input id= "scoreName" type="text" name="score">
                                                 <input id="btn" type="button" onclick="postScore()" value="Submit">
