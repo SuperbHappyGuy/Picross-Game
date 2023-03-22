@@ -599,7 +599,7 @@ function solutionCheck() {
 }
 
 function mobileCheck() {
-  if(/Android|iPhone/i.test(navigator.userAgent)) {
+  if(document.getElementById("main").clientWidth < 800) {
     mobile = true;
   }
 }
@@ -704,14 +704,14 @@ function scale() {
     }
    }
 
-   if(document.getElementById("main").clientWidth < 800) {
+   if(mobile == true) {
     document.getElementById("grid").style.marginTop = "55%";
     document.getElementById("grid").style.marginLeft = "30%";
 
     for(let i = 2; i <= 20; i++) {
       document.getElementById("grid").style.transform = "scale(1.5)";
       if(userInput == 2) {
-        document.getElementById("grid").style.zoom = 0.60;
+        document.getElementById("grid").style.zoom = 0.40;
       }
       if(userInput == 3) {
         document.getElementById("grid").style.zoom = 0.58;
