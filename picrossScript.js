@@ -393,9 +393,6 @@ if (mobile == true) {
   });
 
   document.addEventListener(`touchend`, (event) => {
-    fingerIsDown = false;
-    oneTouch = false;
-    twoTouch = false;
   });
 
   document.addEventListener('touchmove', (event) => {
