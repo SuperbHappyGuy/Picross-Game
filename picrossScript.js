@@ -702,7 +702,7 @@ function scale() {
 
    if(mobile == true) {
     document.getElementById("grid").style.marginTop = "55%";
-    document.getElementById("grid").style.marginLeft = "30%";
+    document.getElementById("grid").style.marginLeft = "33%";
 
     for(let i = 2; i <= 20; i++) {
       document.getElementById("grid").style.transform = "scale(1.5)";
@@ -710,10 +710,10 @@ function scale() {
         document.getElementById("grid").style.zoom = 0.40;
       }
       if(userInput == 3) {
-        document.getElementById("grid").style.zoom = 0.36;
+        document.getElementById("grid").style.zoom = 0.34;
       }
       if(userInput == 4) {
-        document.getElementById("grid").style.zoom = 0.25;
+        document.getElementById("grid").style.zoom = 0.27;
       }
       if(userInput == 5) {
         document.getElementById("grid").style.zoom = 0.18;
