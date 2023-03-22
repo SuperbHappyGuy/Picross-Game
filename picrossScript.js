@@ -728,40 +728,40 @@ function scale() {
         document.getElementById("grid").style.zoom = 0.17;
       }
       if(userInput == 9) {
-        document.getElementById("grid").style.zoom = 0.14;
-      }
-      if(userInput == 10) {
-        document.getElementById("grid").style.zoom = 0.12;
-      }
-      if(userInput == 11) {
-        document.getElementById("grid").style.zoom = 0.19;
-      }
-      if(userInput == 12) {
-        document.getElementById("grid").style.zoom = 0.17;
-      }
-      if(userInput == 13) {
         document.getElementById("grid").style.zoom = 0.15;
       }
-      if(userInput == 14) {
+      if(userInput == 10) {
         document.getElementById("grid").style.zoom = 0.13;
       }
-      if(userInput == 15) {
-        document.getElementById("grid").style.zoom = 0.12;
+      if(userInput == 11) {
+        document.getElementById("grid").style.zoom = 0.11;
       }
-      if(userInput == 16) {
-        document.getElementById("grid").style.zoom = 0.10;
-      }
-      if(userInput == 17) {
+      if(userInput == 12) {
         document.getElementById("grid").style.zoom = 0.09;
       }
-      if(userInput == 18) {
+      if(userInput == 13) {
+        document.getElementById("grid").style.zoom = 0.08;
+      }
+      if(userInput == 14) {
         document.getElementById("grid").style.zoom = 0.07;
+      }
+      if(userInput == 15) {
+        document.getElementById("grid").style.zoom = 0.06;
+      }
+      if(userInput == 16) {
+        document.getElementById("grid").style.zoom = 0.05;
+      }
+      if(userInput == 17) {
+        document.getElementById("grid").style.zoom = 0.04;
+      }
+      if(userInput == 18) {
+        document.getElementById("grid").style.zoom = 0.03;
       }
       if(userInput == 19) {
-        document.getElementById("grid").style.zoom = 0.07;
+        document.getElementById("grid").style.zoom = 0.02;
       }
       if(userInput == 20) {
-        document.getElementById("grid").style.zoom = 0.06;
+        document.getElementById("grid").style.zoom = 0.01;
       }
      }
   }
