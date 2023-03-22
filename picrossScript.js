@@ -281,7 +281,7 @@ function playerSelection() {
 }
 
 if (mobile == true) {
-  document.addEventListener('ontouchstart', (event) => {
+  document.addEventListener('ontouched', (event) => {
     let elementId = e.target.id;
 
     if (document.getElementById(elementId).className == "grid-item") {
