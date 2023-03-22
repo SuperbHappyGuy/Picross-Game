@@ -740,28 +740,28 @@ function scale() {
         document.getElementById("grid").style.zoom = 0.11;
       }
       if(userInput == 13) {
-        document.getElementById("grid").style.zoom = 0.10;
+        document.getElementById("grid").style.zoom = 0.11;
       }
       if(userInput == 14) {
-        document.getElementById("grid").style.zoom = 0.09;
+        document.getElementById("grid").style.zoom = 0.11;
       }
       if(userInput == 15) {
-        document.getElementById("grid").style.zoom = 0.08;
+        document.getElementById("grid").style.zoom = 0.09;
       }
       if(userInput == 16) {
-        document.getElementById("grid").style.zoom = 0.07;
+        document.getElementById("grid").style.zoom = 0.08;
       }
       if(userInput == 17) {
-        document.getElementById("grid").style.zoom = 0.06;
+        document.getElementById("grid").style.zoom = 0.07;
       }
       if(userInput == 18) {
-        document.getElementById("grid").style.zoom = 0.05;
+        document.getElementById("grid").style.zoom = 0.06;
       }
       if(userInput == 19) {
-        document.getElementById("grid").style.zoom = 0.04;
+        document.getElementById("grid").style.zoom = 0.05;
       }
       if(userInput == 20) {
-        document.getElementById("grid").style.zoom = 0.03;
+        document.getElementById("grid").style.zoom = 0.04;
       }
      }
   }
