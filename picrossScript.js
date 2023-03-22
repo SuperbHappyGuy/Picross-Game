@@ -701,6 +701,9 @@ function scale() {
    }
 
    if(mobile == true) {
+    document.getElementById("grid").style.marginTop = "50%";
+    document.getElementById("grid").style.marginLeft = "28%";
+
     for(let i = 2; i <= 20; i++) {
       document.getElementById("grid").style.transform = "scale(1.5)";
       if(userInput == 2) {
