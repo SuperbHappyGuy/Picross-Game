@@ -645,61 +645,61 @@ function scale() {
   for(let i = 2; i <= 20; i++) {
     document.getElementById("grid").style.transform = "scale(1.5)";
     if(userInput == 2) {
-      document.getElementById("grid").style.zoom = 0.85;
+      document.getElementById("grid").style.zoom = 0.83;
     }
     if(userInput == 3) {
-      document.getElementById("grid").style.zoom = 0.70;
+      document.getElementById("grid").style.zoom = 0.68;
     }
     if(userInput == 4) {
-      document.getElementById("grid").style.zoom = 0.55;
+      document.getElementById("grid").style.zoom = 0.53;
     }
     if(userInput == 5) {
-      document.getElementById("grid").style.zoom = 0.50;
+      document.getElementById("grid").style.zoom = 0.48;
     }
     if(userInput == 6) {
-      document.getElementById("grid").style.zoom = 0.45;
+      document.getElementById("grid").style.zoom = 0.43;
     }
     if(userInput == 7) {
-      document.getElementById("grid").style.zoom = 0.40;
+      document.getElementById("grid").style.zoom = 0.38;
     }
     if(userInput == 8) {
-      document.getElementById("grid").style.zoom = 0.35;
-    }
-    if(userInput == 9) {
-      document.getElementById("grid").style.zoom = 0.35;
-    }
-    if(userInput == 10) {
       document.getElementById("grid").style.zoom = 0.33;
     }
-    if(userInput == 11) {
+    if(userInput == 9) {
+      document.getElementById("grid").style.zoom = 0.33;
+    }
+    if(userInput == 10) {
       document.getElementById("grid").style.zoom = 0.31;
     }
-    if(userInput == 12) {
+    if(userInput == 11) {
       document.getElementById("grid").style.zoom = 0.29;
     }
-    if(userInput == 13) {
+    if(userInput == 12) {
       document.getElementById("grid").style.zoom = 0.27;
     }
-    if(userInput == 14) {
+    if(userInput == 13) {
       document.getElementById("grid").style.zoom = 0.25;
     }
-    if(userInput == 15) {
-      document.getElementById("grid").style.zoom = 0.24;
+    if(userInput == 14) {
+      document.getElementById("grid").style.zoom = 0.23;
     }
-    if(userInput == 16) {
+    if(userInput == 15) {
       document.getElementById("grid").style.zoom = 0.22;
     }
+    if(userInput == 16) {
+      document.getElementById("grid").style.zoom = 0.20;
+    }
     if(userInput == 17) {
-      document.getElementById("grid").style.zoom = 0.21;
+      document.getElementById("grid").style.zoom = 0.19;
     }
     if(userInput == 18) {
-      document.getElementById("grid").style.zoom = 0.19;
+      document.getElementById("grid").style.zoom = 0.17;
     }
     if(userInput == 19) {
-      document.getElementById("grid").style.zoom = 0.19;
+      document.getElementById("grid").style.zoom = 0.17;
     }
     if(userInput == 20) {
-      document.getElementById("grid").style.zoom = 0.18;
+      document.getElementById("grid").style.zoom = 0.16;
     }
    }
 }
