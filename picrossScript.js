@@ -702,7 +702,7 @@ function scale() {
 
    if(mobile == true) {
     document.getElementById("grid").style.marginTop = "55%";
-    document.getElementById("grid").style.marginLeft = "33%";
+    document.getElementById("grid").style.marginLeft = "28%";
 
     for(let i = 2; i <= 20; i++) {
       document.getElementById("grid").style.transform = "scale(1.5)";
@@ -716,7 +716,7 @@ function scale() {
         document.getElementById("grid").style.zoom = 0.27;
       }
       if(userInput == 5) {
-        document.getElementById("grid").style.zoom = 0.18;
+        document.getElementById("grid").style.zoom = 0.25;
       }
       if(userInput == 6) {
         document.getElementById("grid").style.zoom = 0.13;
