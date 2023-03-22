@@ -25,9 +25,15 @@ var rowHintsArray = [];
 var userSubmitted = false;
 var win = false;
 var errorChecked = false;
+
 var mouseIsDown = false;
 var leftMouse = false;
 var rightMouse = false;
+
+var fingerIsDown = false;
+var oneTouch = false;
+var twoTouch = false;
+
 var mobile = false;
 var start = false;
 
@@ -281,10 +287,19 @@ function playerSelection() {
 }
 
 if (mobile == true) {
-  document.addEventListener('ontouchstart', (event) => {
+  document.addEventListener('touchstart', (event) => {
+    fingerIsDown = true;
     let elementId = event.target.id;
-    console.log(event.touches[0].clientX);
-    console.log(event.touches[0].clienty);
+
+    if(event.touches.length == 1) {
+      console.log("one finger");
+    }
+
+    if(event.touches.length == 2) {
+      console.log("two finger");
+    }
+
+    console.log(event);
 
     if (document.getElementById(elementId).className == "grid-item") {
         console.log(elementId);
