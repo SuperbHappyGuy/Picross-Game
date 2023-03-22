@@ -707,7 +707,7 @@ function scale() {
     for(let i = 2; i <= 20; i++) {
       document.getElementById("grid").style.transform = "scale(1.5)";
       if(userInput == 2) {
-        document.getElementById("grid").style.zoom = 0.40;
+        document.getElementById("grid").style.zoom = 0.45;
       }
       if(userInput == 3) {
         document.getElementById("grid").style.zoom = 0.58;
