@@ -152,7 +152,6 @@ function solutionHints() {
 function playerSelection() {
   initializeGrid();
 
-  if(mobile == false) {
   document.addEventListener('mousedown', (e) => {
     mouseIsDown = true;
     let elementId = e.target.id;
@@ -200,7 +199,6 @@ function playerSelection() {
     }
     winCondition();
   });
-}
 
   document.addEventListener('ontouchstart', (event) => {
     mouseIsDown = true;
@@ -311,7 +309,6 @@ function playerSelection() {
       } 
     });
 
-    if(mobile == false) {
     document.addEventListener('mouseover', (event) => {
       let elementId = event.target.id;
 
@@ -358,7 +355,6 @@ function playerSelection() {
         }
       }
     });
-  }
 
     document.addEventListener('mouseout', (event) => {
       let elementId = event.target.id;
