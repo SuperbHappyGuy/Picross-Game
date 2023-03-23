@@ -722,7 +722,7 @@ function scale() {
    }
 
    if(mobile == true) {
-    document.getElementById("grid").style.marginTop = "45%";
+    document.getElementById("grid").style.marginTop = "15%";
     document.getElementById("grid").style.marginLeft = "26%";
 
     for(let i = 2; i <= 20; i++) {
