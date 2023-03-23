@@ -336,53 +336,7 @@ function playerSelection() {
     });
 
     document.addEventListener('touchmove', (event) => {
-      event.preventDefault();
-      
-      let elementId = document.elementFromPoint(event.touches[0].clientX, event.touches[0].clientY);
-      console.log(elementId.id);
-
-        if (document.getElementById(elementId.id).className == "grid-item") {
-          for(let i = 0; i < grid.length; i++) {
-            for(let a = 0; a < grid[i].length; a++) {
-              if(grid[i][a] == elementId.id) {
-                for(let x = 0; x < userInput; x++) {
-                  document.getElementById(grid[i][(a % 1) + x]).style.boxShadow = "inset 0 0 0 1000px rgba(0,0,255,0.12)";
-                  document.getElementById(grid[(i % 1) + x][a]).style.boxShadow = "inset 0 0 0 1000px rgba(0,0,255,0.12)";
-                }
-              }
-            }
-          }
-        }
-
-        if(fingerIsDown == true) {
-          for(let i = 0; i < grid.length; i++) {
-            for(let a = 0; a < grid[i].length; a++) {
-              if(grid[i][a] == elementId.id) {
-                if(oneTouch == true && playerSelected[i][a] == false) {
-                  playerSelected[i][a] = true;
-                  playerXMarkerSelected[i][a] = false;
-                  document.getElementById(elementId.id).style.backgroundColor = "#171820";
-                } else if(playerSelected[i][a] == true && oneTouch == true) {
-                  playerSelected[i][a] = false;
-                  document.getElementById(elementId.id).style.backgroundColor = "white";
-                  document.getElementById(elementId.id).style.backgroundImage = "none";
-                }
-                
-                if(twoTouch == true && playerXMarkerSelected[i][a] == false) {
-                  playerSelected[i][a] = false;
-                  playerXMarkerSelected[i][a] = true;
-                  document.getElementById(elementId.id).style.backgroundImage = "url(./Imgs/xMarker.png)";
-                  document.getElementById(elementId.id).style.backgroundSize = "90px 90px";
-                  document.getElementById(elementId.id).style.backgroundColor = "white";
-                } else if(playerXMarkerSelected[i][a] == true && twoTouch == true) {
-                  playerXMarkerSelected[i][a] = false;
-                  document.getElementById(elementId.id).style.backgroundColor = "white";
-                  document.getElementById(elementId.id).style.backgroundImage = "none";
-                }
-              }
-            }
-          }
-        }
+      //event.preventDefault();
     }, { passive: false });
 
     document.addEventListener(`touchend`, (event) => {
