@@ -6,7 +6,7 @@ var playerScore;
 
 function postScore() {
     setTimeout(getPlayer, 1000);
-    setTimeout(postNewPlayerScore, 2000);
+    setTimeout(postNewPlayerScore, 5000);
     
     getPlayer(publicList[userInput - 2]);
 }
@@ -45,9 +45,9 @@ async function getPlayer(public) {
             } else {
                 if(data.players[i].score > score) {
                     postRefreshPlayerScore(editList[userInput - 2]);
-                    postNewPlayerScore(editList[userInput - 2]);
+                    getPlayer(publicList[userInput - 2]);
                 } else {
-                    console.log("No new high score!")
+                    console.log("No new high score!");
                 }
             }
         }
