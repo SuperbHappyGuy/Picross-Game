@@ -19,4 +19,10 @@
   <li>Hold the blank top left area of the grid with one finger and tap a cell with another finger to mark an X in a cell</li>
 </ul>
 
+## Disclaimer
+<p>The puzzles of Picross are normally based on pictures and where it gets it's name (Picture word cross). Due to the puzzles being randomly generated there is a chance that some puzzles will have multiple solutions, which is not intended. To combat this I added a mistake checker, this will ensure you get the correct puzzle solution every play!</p>
+
+## Mistake Checker
+<p>To check your mistakes in a puzzle fill in the entire grid with either colored cells or X cells to reveal red colored cells indicating your mistakes. Swap those inputs to get the correct solution. Mistakes will add an hour on to your final time but only if the grid is filled so don't worry about any prior mistakes!</p>
+
 [![Visits Badge](https://badges.strrl.dev/visits/SuperbHappyGuy/Picross-Game)](https://badges.strrl.dev)
