@@ -19,6 +19,9 @@
   <li>Hold the blank top left area of the grid with one finger and tap a cell with another finger to mark an X in a cell</li>
 </ul>
 
+## Leaderboard
+<p>Don't forget to drop your best time into the leaderboard by providing a name and your best time will be submitted. You can use a name previously entered but it will only submit the best time. Please don't use other peoples names on the board and try to be honorable. The leaderboard uses this website's API: https://keepthescore.co/</p>
+
 ## Disclaimer
 <p>The puzzles of Picross are normally based on pictures and where it gets it's name (Picture word cross). Due to the puzzles being randomly generated there is a chance that some puzzles will have multiple solutions, which is not intended. To combat this I added a mistake checker, this will ensure you get the correct puzzle solution every play!</p>
 
