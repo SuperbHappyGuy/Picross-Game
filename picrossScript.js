@@ -32,7 +32,8 @@ var rightMouse = false;
 
 var fingerIsDown = false;
 var oneTouch = false;
-var twoTouch = false;
+var xMarker = false;
+var xMarkerInput = false;
 
 var mobile = false;
 var start = false;
@@ -75,9 +76,6 @@ let closeHint = '">'
 
 function gridStart(size) {
   mobileCheck();
-  if(start == true) {
-    clearGrid();
-  }
   timer();
   userGridSize(size);
   buildGrid();
@@ -300,28 +298,21 @@ function playerSelection() {
       for(let i = 0; i < grid.length; i++) {
         for(let a = 0; a < grid[i].length; a++) {
           if(grid[i][a] == elementId) {
-            if(event.touches.length == 1 && playerSelected[i][a] == false) {
+            if(event.touches.length == 1 && playerSelected[i][a] == false && playerXMarkerSelected[i][a] == false) {
               oneTouch = true;
               playerSelected[i][a] = true;
               playerXMarkerSelected[i][a] = false;
               document.getElementById(elementId).style.backgroundColor = "#171820";
               document.getElementById(elementId).style.backgroundImage = "none";
-            } else if(playerSelected[i][a] == true && event.touches.length == 1) {
+            } else if(playerSelected[i][a] == true && playerXMarkerSelected[i][a] == false) {
               oneTouch = true;
-              playerSelected[i][a] = false;
-              document.getElementById(elementId).style.backgroundColor = "white";
-              document.getElementById(elementId).style.backgroundImage = "none";
-            }
-            
-            if(event.touches.length == 2 && playerXMarkerSelected[i][a] == false) {
-              twoTouch = true;
               playerSelected[i][a] = false;
               playerXMarkerSelected[i][a] = true;
               document.getElementById(elementId).style.backgroundImage = "url(./Imgs/xMarker.png)";
               document.getElementById(elementId).style.backgroundSize = "90px 90px";
               document.getElementById(elementId).style.backgroundColor = "white";
-            } else if(playerXMarkerSelected[i][a] == true && event.touches.length == 2) {
-              twoTouch = true;
+            } else if(playerSelected[i][a] == false && playerXMarkerSelected[i][a] == true) {
+              oneTouch = true;
               playerXMarkerSelected[i][a] = false;
               document.getElementById(elementId).style.backgroundColor = "white";
               document.getElementById(elementId).style.backgroundImage = "none";
@@ -342,7 +333,7 @@ function playerSelection() {
     document.addEventListener(`touchend`, (event) => {
       fingerIsDown = false;
       oneTouch = false;
-      twoTouch = false;
+      xMarkerInput = false;
     });
   }
 }
@@ -573,44 +564,6 @@ function mobileCheck() {
     mobile = true;
   }
   console.log("Mobile = " + mobile);
-}
-
-function clearGrid() {
-  userInput = 0;
-  template = "";
-  gridTotal = 0;
-  cellSize = 0;
-  cells = 0;
-  cellIncrement = 0;
-  hintInt = 0;
-  hintString = "";
-  solution = [];
-  playerSelected = [];
-  playerXMarkerSelected = [];
-  grid = [];
-  fullGrid = [];
-  gridIDs = [];
-  allTrue = [];
-  colHintsArray = [];
-  rowHintsArray = [];
-  userSubmitted = false;
-  win = false;
-  errorChecked = false;
-  mouseIsDown = false;
-  leftMouse = false;
-  rightMouse = false;
-  mobile = false;
-  start = false;
-  timers = 0;
-  score = 0;
-  sec = 0;
-  min = 0;
-  hour = 0;
-  gridHintAmount = 0;
-
-  document.getElementById("grid").innerHTML = "";
-  document.getElementById("container").innerHTML = "";
-  document.getElementById('time').innerHTML = "";
 }
 
 function scale() {
