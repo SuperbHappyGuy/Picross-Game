@@ -7,8 +7,10 @@ var playerScore;
 function postScore() {
     setTimeout(getPlayer, 1000);
     setTimeout(postNewPlayerScore, 5000);
-    
+
     getPlayer(publicList[userInput - 2]);
+
+    document.getElementById("name").style.display = "none";
 }
 
 async function postNewPlayer(edit) {

@@ -248,6 +248,10 @@ function playerSelection() {
           }
         }
       }
+      if(errorChecked == false) {
+        errorCheck();
+      }
+      winCondition();
     }
   });
 
@@ -460,8 +464,8 @@ function winCondition() {
     console.log("You Win!");
     getLeaderBoard(publicList[userInput - 2]);
     document.getElementById("win").innerHTML = `<h1>You Win!</h1>
-                                                Name: <input id= "scoreName" type="text" name="score">
-                                                <input id="btn" type="button" onclick="postScore()" value="Submit">
+                                                <p id="name">Name:  <input id= "scoreName" type="text" name="score"><input id="btn" type="button" onclick="postScore()" value="Submit"></p>
+                                                
                                                 <nav id="table">
                                                   <ul id="leaderBoard"></ul>
                                                 </nav>
