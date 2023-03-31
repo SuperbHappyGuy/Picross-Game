@@ -298,21 +298,28 @@ function playerSelection() {
       for(let i = 0; i < grid.length; i++) {
         for(let a = 0; a < grid[i].length; a++) {
           if(grid[i][a] == elementId) {
-            if(event.touches.length == 1 && playerSelected[i][a] == false && playerXMarkerSelected[i][a] == false) {
+            if(event.touches.length == 1 && playerSelected[i][a] == false) {
               oneTouch = true;
               playerSelected[i][a] = true;
               playerXMarkerSelected[i][a] = false;
               document.getElementById(elementId).style.backgroundColor = "#171820";
               document.getElementById(elementId).style.backgroundImage = "none";
-            } else if(playerSelected[i][a] == true && playerXMarkerSelected[i][a] == false) {
+            } else if(playerSelected[i][a] == true && event.touches.length == 1) {
               oneTouch = true;
+              playerSelected[i][a] = false;
+              document.getElementById(elementId).style.backgroundColor = "white";
+              document.getElementById(elementId).style.backgroundImage = "none";
+            }
+            
+            if(event.touches.length == 2 && playerXMarkerSelected[i][a] == false) {
+              twoTouch = true;
               playerSelected[i][a] = false;
               playerXMarkerSelected[i][a] = true;
               document.getElementById(elementId).style.backgroundImage = "url(./Imgs/xMarker.png)";
               document.getElementById(elementId).style.backgroundSize = "90px 90px";
               document.getElementById(elementId).style.backgroundColor = "white";
-            } else if(playerSelected[i][a] == false && playerXMarkerSelected[i][a] == true) {
-              oneTouch = true;
+            } else if(playerXMarkerSelected[i][a] == true && event.touches.length == 2) {
+              twoTouch = true;
               playerXMarkerSelected[i][a] = false;
               document.getElementById(elementId).style.backgroundColor = "white";
               document.getElementById(elementId).style.backgroundImage = "none";
