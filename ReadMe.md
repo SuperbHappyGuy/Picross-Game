@@ -1,4 +1,6 @@
 # Picross Game
+![picross](https://user-images.githubusercontent.com/29354749/229246964-73382e2b-c3b0-4747-842d-57f3de4735b2.jpg)
+
 <p>Picross Game is a javascript version of the popular logic puzzle game of picross where users fill in a grid based on logical clues to "paint" a picture! You can play it here: https://superbgames.netlify.app/</p>
 
 ## [How to play picross](https://www.hanjie-star.com/en-us/how-to-solve-picross/solve-first-picross-puzzle)
