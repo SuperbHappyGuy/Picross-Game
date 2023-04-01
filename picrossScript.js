@@ -32,8 +32,7 @@ var rightMouse = false;
 
 var fingerIsDown = false;
 var oneTouch = false;
-var xMarker = false;
-var xMarkerInput = false;
+var twoTouch = false;
 
 var mobile = false;
 var start = false;
@@ -272,7 +271,7 @@ function playerSelection() {
     }
   });
 
-  document.addEventListener(`mouseup`, (event) => {
+  document.addEventListener(`mouseup`, (event) => { 
     mouseIsDown = false;
     leftMouse = false;
     rightMouse = false;
@@ -344,7 +343,7 @@ function playerSelection() {
     document.addEventListener(`touchend`, (event) => {
       fingerIsDown = false;
       oneTouch = false;
-      xMarkerInput = false;
+      twoTouch = false;
     });
   }
 }
@@ -464,8 +463,8 @@ function winCondition() {
     console.log("You Win!");
     getLeaderBoard(publicList[userInput - 2]);
     document.getElementById("win").innerHTML = `<h1>You Win!</h1>
-                                                <p id="name">Name:  <input id= "scoreName" type="text" name="score"><input id="btn" type="button" onclick="postScore()" value="Submit"></p>
-                                                
+                                                Name: <input id= "scoreName" type="text" name="score">
+                                                <input id="btn" type="button" onclick="postScore()" value="Submit">
                                                 <nav id="table">
                                                   <ul id="leaderBoard"></ul>
                                                 </nav>
